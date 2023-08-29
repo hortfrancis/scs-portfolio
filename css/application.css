@@ -1,8 +1,14 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
 }
 
-.projects__card a {
+.contact-form__input-group button, .projects__card a {
   display: inline-block;
   padding: 1ex 1em;
   border: 0.2em solid #2b7a8d;
@@ -10,18 +16,18 @@ body {
   color: #E6FAFC;
   font-weight: 600;
 }
-.projects__card a:hover, .projects__card a:focus {
+.contact-form__input-group button:hover, .projects__card a:hover, .contact-form__input-group button:focus, .projects__card a:focus {
   background-color: #F9C22E;
   color: white;
   border: 0.2em solid #bc8a05;
   text-decoration: none;
 }
-.projects__card a:active {
+.contact-form__input-group button:active, .projects__card a:active {
   background-color: #bc8a05;
   color: white;
 }
 
-body {
+body, input, textarea {
   color: #0C090D;
   font-family: "Work Sans", Helvetica, Arial, sans-serif;
 }
@@ -51,6 +57,10 @@ a:hover {
   text-decoration: underline;
 }
 
+input::placeholder, textarea::placeholder {
+  font-style: italic;
+}
+
 .screen-reader-only, .primary-nav {
   position: absolute;
   width: 1px;
@@ -73,6 +83,10 @@ a:hover {
   align-items: center;
   height: 100vh;
   background-color: #53B3CB;
+}
+
+.contact-form {
+  padding: 1rem;
 }
 
 .banner__heading-group {
@@ -99,6 +113,37 @@ a:hover {
 
 .projects__card-text-area {
   padding: 1em;
+}
+
+.contact-form__input-group {
+  margin-bottom: 2rem;
+}
+.contact-form__input-group label {
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+.contact-form__input-group label:after {
+  content: ":";
+}
+.contact-form__input-group label:focus {
+  outline: 1rem solid #F9C22E;
+}
+.contact-form__input-group input,
+.contact-form__input-group textarea {
+  display: block;
+  width: 100%;
+  padding: 1em;
+  border: 0.5ex solid #0C090D;
+  font-size: 1.2rem;
+}
+.contact-form__input-group input:focus,
+.contact-form__input-group textarea:focus {
+  outline: 1rem solid #F9C22E;
+}
+.contact-form__input-group button {
+  font-size: 1.5rem;
 }
 
 /*# sourceMappingURL=application.css.map */

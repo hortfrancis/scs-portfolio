@@ -1,0 +1,39 @@
+.contact-form__input-group {
+
+    margin-bottom: 2rem;
+
+    label {
+        display: block;
+        margin-bottom: 1rem;
+        font-weight: 600;
+
+        font-size: 1.2rem;
+
+        &:after {
+            content: ':';
+        }
+
+        &:focus {
+            outline: 1rem solid $feedback-yellow;
+        }
+    }
+
+    input,
+    textarea {
+        display: block;
+        width: 100%;
+        padding: 1em;
+        border: 0.5ex solid $base-black;
+        font-size: 1.2rem;
+
+        &:focus {
+            outline: 1rem solid $feedback-yellow;
+        }
+    }
+
+    button {
+        @extend %button;
+
+        font-size: 1.5rem;
+    }
+}
