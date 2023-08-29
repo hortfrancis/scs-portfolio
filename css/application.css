@@ -1,3 +1,31 @@
+body {
+  color: #0C090D;
+  font-family: "Work Sans", Helvetica, Arial, sans-serif;
+}
 
+h1, h2 {
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+a {
+  color: #53B3CB;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
 
 /*# sourceMappingURL=application.css.map */
