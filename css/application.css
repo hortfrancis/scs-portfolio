@@ -1,4 +1,8 @@
 body {
+  margin: 0;
+}
+
+body {
   color: #0C090D;
   font-family: "Work Sans", Helvetica, Arial, sans-serif;
 }
@@ -26,6 +30,31 @@ a {
 }
 a:hover {
   text-decoration: underline;
+}
+
+.no-line-break {
+  white-space: nowrap;
+}
+
+#banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #53B3CB;
+}
+
+.banner__heading-group {
+  padding: 0 2rem 1rem;
+  border: 1ex solid #0C090D;
+  background-color: #E6FAFC;
+}
+
+.banner__subheading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  color: #2b7a8d;
 }
 
 /*# sourceMappingURL=application.css.map */

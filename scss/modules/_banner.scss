@@ -1,0 +1,15 @@
+.banner__heading-group {
+
+    padding: 0 2rem 1rem;
+    border: 1ex solid $base-black;
+
+    background-color: $base-white;
+}
+
+.banner__subheading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+
+    color: darken($primary-blue, 20%);
+}

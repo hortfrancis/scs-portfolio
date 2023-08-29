@@ -1,0 +1,4 @@
+// Prevent inline text from wrapping onto a new line
+.no-line-break {
+    white-space: nowrap;
+}
