@@ -1,0 +1,16 @@
+.projects__card {
+    border: 1ex solid $base-black;
+}
+
+.projects__card img {
+    display: block;
+    max-width: 100%;   
+}
+
+.projects__card a {
+    @extend %button;
+}
+
+.projects__card-text-area {
+    padding: 1em;
+}

@@ -2,6 +2,25 @@ body {
   margin: 0;
 }
 
+.projects__card a {
+  display: inline-block;
+  padding: 1ex 1em;
+  border: 0.2em solid #2b7a8d;
+  background-color: #53B3CB;
+  color: #E6FAFC;
+  font-weight: 600;
+}
+.projects__card a:hover, .projects__card a:focus {
+  background-color: #F9C22E;
+  color: white;
+  border: 0.2em solid #bc8a05;
+  text-decoration: none;
+}
+.projects__card a:active {
+  background-color: #bc8a05;
+  color: white;
+}
+
 body {
   color: #0C090D;
   font-family: "Work Sans", Helvetica, Arial, sans-serif;
@@ -67,6 +86,19 @@ a:hover {
   font-weight: 600;
   text-align: center;
   color: #2b7a8d;
+}
+
+.projects__card {
+  border: 1ex solid #0C090D;
+}
+
+.projects__card img {
+  display: block;
+  max-width: 100%;
+}
+
+.projects__card-text-area {
+  padding: 1em;
 }
 
 /*# sourceMappingURL=application.css.map */
