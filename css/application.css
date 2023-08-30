@@ -49,12 +49,27 @@ h3 {
   font-size: 2rem;
 }
 
+p {
+  line-height: 1.5;
+}
+
 a {
   color: #53B3CB;
   text-decoration: none;
 }
 a:hover {
   text-decoration: underline;
+}
+a:visited {
+  color: #2b7a8d;
+}
+
+b, strong {
+  font-weight: 600;
+}
+
+li {
+  margin-bottom: 0.5em;
 }
 
 input::placeholder, textarea::placeholder {
@@ -144,6 +159,28 @@ input::placeholder, textarea::placeholder {
 }
 .contact-form__input-group button {
   font-size: 1.5rem;
+}
+
+.subpage__heading-group {
+  margin: 2rem;
+  text-align: center;
+}
+.subpage__heading-group h1, .subpage__heading-group p {
+  margin: 0;
+  margin-bottom: 0.25em;
+}
+
+.subpage__subheading {
+  color: #2b7a8d;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.subpage__image {
+  display: block;
+  margin: 0;
+  max-width: 100%;
+  height: auto;
 }
 
 /*# sourceMappingURL=application.css.map */

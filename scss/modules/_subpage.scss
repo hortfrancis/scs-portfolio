@@ -1,0 +1,27 @@
+.subpage__heading-group {
+
+    margin: 2rem;
+
+    text-align: center;
+
+    h1, p {
+        margin: 0;
+        margin-bottom: 0.25em;
+    }
+}
+
+.subpage__subheading {
+
+    color: darken($primary-blue, 20%);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+
+
+.subpage__image {
+    display: block;
+    margin: 0;
+    max-width: 100%;
+    height: auto;
+}

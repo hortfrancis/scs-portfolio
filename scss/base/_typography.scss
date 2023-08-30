@@ -20,12 +20,27 @@ h3 {
     font-size: 2rem;
 }
 
+p {
+    line-height: 1.5;
+}
+
 a {
     color: $primary-blue;
     text-decoration: none;
     &:hover {
         text-decoration: underline;
     }
+    &:visited {
+        color: darken($primary-blue, 20%);
+    }
+}
+
+b, strong {
+    font-weight: 600;
+}
+
+li {
+    margin-bottom: 0.5em;
 }
 
 input::placeholder, textarea::placeholder {
