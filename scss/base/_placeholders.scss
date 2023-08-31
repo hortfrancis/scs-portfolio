@@ -1,11 +1,13 @@
+// Works for <button> and 'button-like' <a>
 %button {
-    
+
     display: inline-block;
     padding: 1ex 1em;
     border: 0.2em solid darken($primary-blue, 20%);
     background-color: $primary-blue;
     color: $base-white;
     font-weight: 600;
+    cursor: pointer;  // <a> has this by default but <button> doesn't
 
     &:hover, &:focus {
 
@@ -15,11 +17,10 @@
         text-decoration: none;
     }
     &:active {
-
         background-color: darken($feedback-yellow, 20%);
         color: lighten($base-white, 20%);
     }
-    &:visited {
+    &:visited {   
         color: $base-white;
     }
 }

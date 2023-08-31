@@ -13,8 +13,9 @@ body {
   padding: 1ex 1em;
   border: 0.2em solid #2b7a8d;
   background-color: #53B3CB;
-  color: #E6FAFC;
+  color: #FFF;
   font-weight: 600;
+  cursor: pointer;
 }
 .contact-form__input-group button:hover, .projects__card a:hover, .contact-form__input-group button:focus, .projects__card a:focus {
   background-color: #F9C22E;
@@ -27,7 +28,7 @@ body {
   color: white;
 }
 .contact-form__input-group button:visited, .projects__card a:visited {
-  color: #E6FAFC;
+  color: #FFF;
 }
 
 body, input, textarea {
@@ -147,10 +148,55 @@ input::placeholder, textarea::placeholder {
   padding: 1rem;
 }
 
+.primary-nav__burger-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: grid;
+  grid-template-columns: 20% 1fr 20%;
+  grid-template-rows: 20% repeat(5, 1fr) 20%;
+  width: 4rem;
+  height: 4rem;
+  background-color: #FFF;
+  border: 0.4rem solid #0C090D;
+  padding: 0;
+  cursor: pointer;
+}
+.primary-nav__burger-button > span {
+  display: block;
+  height: 100%;
+  grid-column: 2/-2;
+  background-color: black;
+}
+.primary-nav__burger-button:hover {
+  background: #F9C22E;
+}
+.primary-nav__burger-button:focus {
+  outline: 1rem solid #F9C22E;
+}
+.primary-nav__burger-button:active {
+  background-color: #0C090D;
+}
+.primary-nav__burger-button:active span {
+  background: #FFF;
+}
+
+.primary-nav__burger-button-top-line {
+  grid-row: 2/3;
+}
+
+.primary-nav__burger-button-middle-line {
+  grid-row: 4/5;
+}
+
+.primary-nav__burger-button-bottom-line {
+  grid-row: 6/7;
+}
+
 .banner__heading-group {
   padding: 0 2rem 1rem;
   border: 1ex solid #0C090D;
-  background-color: #E6FAFC;
+  background-color: #FFF;
 }
 
 .banner__subheading {
