@@ -19,4 +19,7 @@
         background-color: darken($feedback-yellow, 20%);
         color: lighten($base-white, 20%);
     }
+    &:visited {
+        color: $base-white;
+    }
 }

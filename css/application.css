@@ -26,6 +26,9 @@ body {
   background-color: #bc8a05;
   color: white;
 }
+.contact-form__input-group button:visited, .projects__card a:visited {
+  color: #E6FAFC;
+}
 
 body, input, textarea {
   color: #0C090D;
