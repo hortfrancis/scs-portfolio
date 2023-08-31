@@ -4,7 +4,7 @@
 
 .projects__card img {
     display: block;
-    max-width: 100%;   
+    max-width: 100%;
 }
 
 .projects__card a {
@@ -13,4 +13,13 @@
 
 .projects__card-text-area {
     padding: 1em;
+
+    h3 {
+        margin: 0.5rem 0 1.5rem;
+    }
+}
+
+.projects__card-button {
+    margin-top: 1rem;
+    margin-right: 1rem;
 }

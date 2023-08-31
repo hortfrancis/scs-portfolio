@@ -1,0 +1,37 @@
+.projects__layout-grid-container {
+
+    display: grid;
+    gap: 1.5rem;
+
+    // Set a default margin away from the viewport edge on narrow screen width (mobile-first)
+    margin: 0 1rem;
+
+    @include at-breakpoint(narrow-to-medium) {
+
+        // Set a one-column max width as the viewport width increases  
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    @include at-breakpoint(medium-to-wide) {
+
+        // Switch to a two-column layout with the max width set against the viewport width
+        grid-template-columns: repeat(2, 1fr);
+        max-width: none;
+        margin: 0 1rem;
+    }
+
+    @include at-breakpoint(wide-to-extra-wide) {
+        
+        // Switch to a 3-column layout 
+        grid-template-columns: repeat(3, 1fr);
+
+    }
+
+    @include at-breakpoint(extra-wide-to-ultra-wide) {
+
+        // Add a max width and center with auto margins 
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+}

@@ -4,3 +4,11 @@ $base-white: #E6FAFC;
 $primary-blue: #53B3CB;
 $feedback-yellow:  #F9C22E;
 $alert-red: #E01A4F;
+
+// Breakpoint values for viewport width
+$breakpoints: (
+    narrow-to-medium: 650px,
+    medium-to-wide: 900px,
+    wide-to-extra-wide: 1200px,
+    extra-wide-to-ultra-wide: 1650px
+);

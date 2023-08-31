@@ -43,6 +43,7 @@ h1 {
 
 h2 {
   font-size: 2.5rem;
+  margin: 1em;
 }
 
 h3 {
@@ -100,6 +101,36 @@ input::placeholder, textarea::placeholder {
   background-color: #53B3CB;
 }
 
+.projects__layout-grid-container {
+  display: grid;
+  gap: 1.5rem;
+  margin: 0 1rem;
+}
+@media (min-width: 650px) {
+  .projects__layout-grid-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 900px) {
+  .projects__layout-grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: none;
+    margin: 0 1rem;
+  }
+}
+@media (min-width: 1200px) {
+  .projects__layout-grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 1650px) {
+  .projects__layout-grid-container {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+}
+
 .contact-form {
   padding: 1rem;
 }
@@ -128,6 +159,14 @@ input::placeholder, textarea::placeholder {
 
 .projects__card-text-area {
   padding: 1em;
+}
+.projects__card-text-area h3 {
+  margin: 0.5rem 0 1.5rem;
+}
+
+.projects__card-button {
+  margin-top: 1rem;
+  margin-right: 1rem;
 }
 
 .contact-form__input-group {

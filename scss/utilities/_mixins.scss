@@ -1,1 +1,12 @@
-// Add a mixin for media queries 
+// Mixin to handle media queries (mobile-first)
+@mixin at-breakpoint($name) {
+    @if map-has-key($breakpoints, $name) {
+        @media (min-width: map-get($breakpoints, $name)) {
+            @content;
+        }
+    }
+    // (Error handling for developers)
+    @else {
+        @warn "Unknown breakpoint: #{$breakpoint}.";
+    }
+}
