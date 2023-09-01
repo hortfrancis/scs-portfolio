@@ -284,6 +284,41 @@ input::placeholder, textarea::placeholder {
   color: #0C090D;
 }
 
+.primary-nav__social-media-menu {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem auto;
+}
+.primary-nav__social-media-menu li {
+  margin: 0.5rem;
+}
+
+.primary-nav__social-media-link {
+  display: inline-block;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  width: 2rem;
+  height: 2rem;
+}
+.primary-nav__social-media-link svg {
+  width: 100%;
+  height: 100%;
+  fill: #0C090D;
+}
+
+.primary-nav__social-media-link--linkedin:hover svg {
+  fill: #0077b5;
+}
+
+.primary-nav__social-media-link--instagram:hover svg {
+  fill: #E1306C;
+}
+
+.primary-nav__social-media-link--github:hover svg {
+  fill: #6E40C9;
+}
+
 .banner__heading-group {
   padding: 0 2rem 1rem;
   border: 1ex solid #0C090D;
