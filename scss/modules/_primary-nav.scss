@@ -22,17 +22,23 @@
         background-color: black;
     }
 
-    // Styling for interactivity states 
+    @include at-breakpoint(medium-to-wide) {
+        // Hide burger button when the primary-nav is visible because to the screen being wide enough
+        display: none;
+    }
+
     &:hover {
-        // background-color: lighten($feedback-yellow, 50%);
         background: $feedback-yellow;
     }
+
     &:focus {
         outline: 1rem solid $feedback-yellow;
     }
+
     &:active {
         background-color: $base-black;
     }
+
     &:active span {
         background: $base-white;
     }
@@ -42,9 +48,89 @@
 .primary-nav__burger-button-top-line {
     grid-row: 2 / 3;
 }
+
 .primary-nav__burger-button-middle-line {
     grid-row: 4 / 5;
 }
+
 .primary-nav__burger-button-bottom-line {
     grid-row: 6 / 7;
+}
+
+.primary-nav__logo {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 2rem;
+    border-bottom: 0.5rem solid $base-black;
+
+    background-color: $primary-blue;
+    font-size: 4rem;
+    font-weight: 800;
+
+    span {
+        display: block;
+        color: $base-white;
+        letter-spacing: 0.05em;
+
+        &:first-child {
+            margin-bottom: -1.2rem;
+        }
+    }
+
+    &:visited {
+        color: $primary-blue;
+    }
+
+    &:hover,
+    &:focus {
+        background-color: $feedback-yellow;
+        text-decoration: none;
+    }
+
+    &:active {
+        span {
+            color: black;
+        }
+    }
+}
+
+.primary-nav__subpages-menu {
+
+    margin: 2rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+
+    li {
+        a {
+            display: block;
+            padding: 1rem;
+            text-align: center;
+
+            &:visited {
+                color: $primary-blue;
+            }
+
+            &:hover {
+                text-decoration: none;
+                color: $base-white;
+                background-color: $feedback-yellow;
+            }
+
+            &:focus {
+                outline: 1rem solid $feedback-yellow;
+            }
+
+            &:active {
+                color: $base-black;
+
+            }
+        }
+
+        border-bottom: 0.2rem solid $base-black;
+        margin: 0;
+    }
 }

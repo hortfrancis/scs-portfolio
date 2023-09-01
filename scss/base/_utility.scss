@@ -1,16 +1,3 @@
-// Make HTML elements visibly hidden but accessibly available to screen readers, search engine crawlers, bots, etc. 
-.screen-reader-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-}
-
 // Prevent inline text from wrapping onto a new line
 .no-line-break {
     white-space: nowrap;

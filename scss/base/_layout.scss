@@ -1,7 +1,6 @@
-
 // Ensures the footer is always at the bottom of the page, 
 // even if there is not enough content to push it down.
-.layout-flex-container {
+.layout-vertical-flex-container {
 
     display: flex;
     flex-direction: column;
@@ -10,5 +9,11 @@
     // Applies to the <footer>
     > :last-child {
         margin-top: auto;
+    }
+
+    @include at-breakpoint(medium-to-wide) {
+        // Moves the main content to the right to make space for the of the primary-nav
+        margin-left: 16rem;
+
     }
 }

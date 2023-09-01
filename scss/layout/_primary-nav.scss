@@ -1,0 +1,34 @@
+.primary-nav {
+
+    display: flex;
+    flex-direction: column;
+    width: 16rem;
+    position: fixed;
+    height: 100vh;
+
+    border-right: 0.5rem solid $base-black;
+    background-color: $base-white;
+
+    // (At breakpoint width and below)
+    // Minus 1px to handle max-width vs min-width excluding the exact breakpoint width
+    @media (max-width: calc(#{map-get($breakpoints, medium-to-wide)} - 1px)) {
+
+        // Navigation is visually hidden on narrow screens  
+        // but 'accessibly available' to screen readers, search engine crawlers, bots, etc.
+        @include screen-reader-only;
+    }
+
+    ul {
+        // Remove default list styles
+        list-style: none;
+        padding: 0;
+    }
+}
+
+.primary-nav__vertical-flex-container {
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+}

@@ -13,47 +13,55 @@
         rel="stylesheet">
 </head>
 
-<body>
-    <header id="top">
-        <nav class="primary-nav">
+<body id="top">
 
-            <a href="index.html"><span>AHF</span></a>
-
-            <ul> <!-- Primary navigation -->
-                <li><a href="about.html">About</a></li>
-                <li><a href="index.html#portfolio">Portfolio</a></li>
-                <li><a href="/code-snippets.html">Code Snippets</a></li>
-                <li><a href="/scs-scheme.html">SCS Scheme</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-            </ul>
-
-            <ul>
-                <li><a href="https://www.linkedin.com/in/hortfrancis"></a></li>
-            </ul>
-
-        </nav>
-    </header>
-
+    <!-- 'Burger' button to access primary navigation -->
     <button class="primary-nav__burger-button">
         <span class="primary-nav__burger-button-top-line"></span>
         <span class="primary-nav__burger-button-middle-line"> </span>
         <span class="primary-nav__burger-button-bottom-line"></span>
     </button>
 
-    <div class="layout-flex-container">
+    <!-- Primary navigation -->
+    <aside>
+        <nav class="primary-nav">
 
-        <main>
+            <a href="index.html" class="primary-nav__logo"><span>A</span><span>HF</span></a>
+
+            <div class="primary-nav__vertical-flex-container">
+
+                <ul class="primary-nav__subpages-menu"> <!-- Primary navigation -->
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="index.html#projects">Portfolio</a></li>
+                    <li><a href="/code-snippets.html">Code Snippets</a></li>
+                    <li><a href="/scs-scheme.html">SCS Scheme</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+
+                <ul>
+                    <li><a href="https://www.linkedin.com/in/hortfrancis"></a></li>
+                </ul>
+
+            </div>
+
+        </nav>
+    </aside>
+
+    <!-- Main page content -->
+    <div class="layout-vertical-flex-container">
+
+        <header>
             <div id="banner">
-
                 <hgroup class="banner__heading-group">
                     <h1 class="banner__heading">Alex <span class="no-line-break">Hort-Francis</span></h1>
                     <p class="banner__subheading">Web Developer & <span class="no-line-break">Technology
                             Consultant</span>
                     </p>
                 </hgroup>
-
             </div>
+        </header>
 
+        <main>
             <section id="projects">
 
                 <h2>Projects</h2>

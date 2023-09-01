@@ -10,3 +10,18 @@
         @warn "Unknown breakpoint: #{$breakpoint}.";
     }
 }
+
+// Make HTML elements visibly hidden but accessibly available to screen readers, search engine crawlers, bots, etc. 
+// This is a mixin because it needs to be used in a media query in `scss/layout/_primary-nav.scss`
+@mixin screen-reader-only {
+    
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
