@@ -31,6 +31,10 @@ body {
   color: #FFF;
 }
 
+body {
+  font-size: 1rem;
+}
+
 body, input, textarea {
   color: #0C090D;
   font-family: "Work Sans", Helvetica, Arial, sans-serif;
@@ -56,6 +60,7 @@ h3 {
 
 p {
   line-height: 1.5;
+  text-align: justify;
 }
 
 a {
@@ -173,6 +178,12 @@ input::placeholder, textarea::placeholder {
 
 .contact-form {
   padding: 1rem;
+}
+
+.subpage__layout-horizontal-container {
+  max-width: 65ch;
+  padding: 0 2rem;
+  margin: 0 auto;
 }
 
 .primary-nav__burger-button {
@@ -384,13 +395,10 @@ input::placeholder, textarea::placeholder {
   font-size: 1.5rem;
 }
 
-.subpage__heading-group {
-  margin: 2rem;
-  text-align: center;
-}
 .subpage__heading-group h1, .subpage__heading-group p {
   margin: 0;
   margin-bottom: 0.25em;
+  text-align: center;
 }
 
 .subpage__subheading {
@@ -399,11 +407,22 @@ input::placeholder, textarea::placeholder {
   font-weight: 600;
 }
 
-.subpage__image {
+.subpage__image-container {
+  width: 50vw;
+  max-width: 20em;
+  border: 0.5rem solid #0C090D;
+  margin: 1rem auto;
+}
+.subpage__image-container img {
   display: block;
   margin: 0;
-  max-width: 100%;
+  width: 100%;
   height: auto;
+}
+@media (min-width: 650px) {
+  .subpage__image-container {
+    width: 33.33vw;
+  }
 }
 
 /*# sourceMappingURL=application.css.map */
