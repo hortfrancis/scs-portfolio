@@ -16,15 +16,23 @@
 <body id="top">
 
     <!-- 'Burger' button to access primary navigation -->
-    <button class="primary-nav__burger-button">
-        <span class="primary-nav__burger-button-top-line"></span>
-        <span class="primary-nav__burger-button-middle-line"> </span>
-        <span class="primary-nav__burger-button-bottom-line"></span>
+    <button aria-hidden="true" class="primary-nav__menu-button">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+            <g class="primary-nav__menu-button-burger-lines">
+                <line x1="20" y1="25" x2="80" y2="25" />
+                <line x1="20" y1="50" x2="80" y2="50" />
+                <line x1="20" y1="75" x2="80" y2="75" />
+            </g>
+            <g class="primary-nav__menu-button-cross-lines primary-nav__menu-button-cross-lines--hidden">
+                <line x1="28" y1="28" x2="72" y2="72" />
+                <line x1="28" y1="72" x2="72" y2="28" />
+            </g>
+        </svg>
     </button>
 
     <!-- Primary navigation -->
     <aside>
-        <nav class="primary-nav">
+        <nav class="primary-nav primary-nav--hidden">
 
             <a href="index.html" class="primary-nav__logo"><span>A</span><span>HF</span></a>
 
@@ -82,19 +90,20 @@
     <!-- Main page content -->
     <div class="layout-vertical-flex-container">
         <div class="subpage__layout-horizontal-container">
+            <div class="subpage">
+                
+                <header>
+                    <hgroup class="subpage__heading-group">
+                        <h1>Code Snippets</h1>
+                    </hgroup>
+                </header>
 
-            <header>
-                <hgroup class="subpage__heading-group">
-                    <h1>Code Snippets</h1>
-                </hgroup>
-            </header>
+                <main>
 
-            <main>
+                    <p>Coming soon ... </p>
 
-                <p>Coming soon ... </p>
-
-            </main>
-
+                </main>
+            </div>
         </div>
 
         <footer>
@@ -103,6 +112,9 @@
 
         </footer>
     </div>
+
+    <!-- JavaScript script import -->
+    <script src="js/main.js"></script>
 </body>
 
 </html>

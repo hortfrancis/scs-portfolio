@@ -1,15 +1,25 @@
 .banner__heading-group {
 
-    padding: 0 2rem 1rem;
+    padding: 0 2em 1em;
     border: 1ex solid $base-black;
-
     background-color: $base-white;
+    // Text starts of scaled to the viewport width
+    font-size: 2.5vw;
+
+    @include at-breakpoint(narrow-to-medium) {
+        // Once the viewport is wide enough, text adopts a fixed size  
+        font-size: 1rem;
+    }
+}
+
+.banner__heading {
+    font-size: 3em;
 }
 
 .banner__subheading {
-    font-size: 1.5rem;
+
+    font-size: 1.25em;
     font-weight: 600;
     text-align: center;
-
     color: darken($primary-blue, 20%);
 }

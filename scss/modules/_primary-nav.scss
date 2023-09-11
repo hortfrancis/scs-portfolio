@@ -1,60 +1,56 @@
-.primary-nav__burger-button {
+.primary-nav__menu-button {
 
-    position: absolute;
+    width: 5rem;
+    height: 5rem;
+    position: fixed;
     top: 1rem;
     right: 1rem;
+    z-index: 20;
 
-    display: grid;
-    grid-template-columns: 20% 1fr 20%;
-    grid-template-rows: 20% repeat(5, 1fr) 20%;
-
-    width: 4rem;
-    height: 4rem;
-    background-color: $base-white;
-    border: 0.4rem solid $base-black;
     padding: 0;
+    border: 0.5rem solid $base-black;
+    background-color: $base-white;
     cursor: pointer;
 
-    >span {
-        display: block;
-        height: 100%;
-        grid-column: 2 / -2;
-        background-color: black;
-    }
-
     @include at-breakpoint(medium-to-wide) {
-        // Hide burger button when the primary-nav is visible because to the screen being wide enough
+        // Hide menu button when the primary-nav is visible because to the screen being wide enough
         display: none;
     }
 
-    &:hover {
-        background: $feedback-yellow;
+    svg {
+        width: 100%;
+        height: 100%;
+        stroke: $base-black;
+        stroke-width: 12%;
+
+        // Styling for animation between burger and cross icons
+        g.primary-nav__menu-button-burger-lines,
+        g.primary-nav__menu-button-cross-lines {
+            transform-origin: center;
+            transition: 300ms;
+        }
+
+        g.primary-nav__menu-button-burger-lines--hidden {
+            opacity: 0;
+            rotate: 45deg;
+        }
+
+        g.primary-nav__menu-button-cross-lines--hidden {
+            opacity: 0;
+            rotate: -45deg;
+        }
     }
 
-    &:focus {
+    // Interactivity styling
+    &:hover,
+    &:focus-visible {
+        background-color: $feedback-yellow;
+    }
+
+    &:focus,
+    &:focus-visible {
         outline: 1rem solid $feedback-yellow;
     }
-
-    &:active {
-        background-color: $base-black;
-    }
-
-    &:active span {
-        background: $base-white;
-    }
-}
-
-// To create the inner lines of the burger button 
-.primary-nav__burger-button-top-line {
-    grid-row: 2 / 3;
-}
-
-.primary-nav__burger-button-middle-line {
-    grid-row: 4 / 5;
-}
-
-.primary-nav__burger-button-bottom-line {
-    grid-row: 6 / 7;
 }
 
 .primary-nav__logo {
@@ -136,7 +132,7 @@
 }
 
 .primary-nav__social-media-menu {
-    
+
     display: flex;
     flex-direction: row;
     margin: 1rem auto;

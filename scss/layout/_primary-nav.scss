@@ -9,14 +9,7 @@
     border-right: 0.5rem solid $base-black;
     background-color: $base-white;
 
-    // (At breakpoint width and below)
-    // Minus 1px to handle max-width vs min-width excluding the exact breakpoint width
-    @media (max-width: calc(#{map-get($breakpoints, medium-to-wide)} - 1px)) {
 
-        // Navigation is visually hidden on narrow screens  
-        // but 'accessibly available' to screen readers, search engine crawlers, bots, etc.
-        @include screen-reader-only;
-    }
 
     ul {
         // Remove default list styles
@@ -31,4 +24,41 @@
     flex-direction: column;
     height: 100%;
     justify-content: center;
+}
+
+
+
+.primary-nav--full-screen {
+
+    // (At breakpoint width and below)
+    // Minus 1px to handle max-width vs min-width excluding the exact breakpoint width
+    // Media query to prevent the full-screen menu appearing on wide screens
+    @media (max-width: calc(#{map-get($breakpoints, medium-to-wide)} - 1px)) {
+
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        border-right: none;
+
+        .primary-nav__subpages-menu li {
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+}
+
+.primary-nav--hidden {
+
+    // (At breakpoint width and below)
+    // Minus 1px to handle max-width vs min-width excluding the exact breakpoint width
+    @media (max-width: calc(#{map-get($breakpoints, medium-to-wide)} - 1px)) {
+
+        // Navigation is visually hidden on narrow screens (until button press)
+        // but 'accessibly available' to screen readers, search engine crawlers, bots, etc.
+        @include screen-reader-only;
+    }
 }
