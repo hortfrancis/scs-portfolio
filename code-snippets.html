@@ -11,11 +11,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,600;0,800;1,400;1,600&display=swap"
         rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,600;1,600&display=swap"
+        rel="stylesheet">
 </head>
 
 <body id="top">
 
-    <!-- 'Burger' button to access primary navigation -->
+    <!-- &apos;Burger' button to access primary navigation -->
     <button aria-hidden="true" class="primary-nav__menu-button">
         <svg viewBox="0 0 100 100" aria-hidden="true">
             <g class="primary-nav__menu-button-burger-lines">
@@ -91,16 +93,291 @@
     <div class="layout-vertical-flex-container">
         <div class="subpage__layout-horizontal-container">
             <div class="subpage">
-                
+
                 <header>
                     <hgroup class="subpage__heading-group">
                         <h1>Code Snippets</h1>
                     </hgroup>
                 </header>
 
-                <main>
+                <main class="subpage__content--coding-snippets">
 
-                    <p>Coming soon ... </p>
+                    <p>For the &lsquo;Contact&rsquo; form on the homepage of this portfolio site, I chose to dig deeply
+                        into form validation techniques, using a combination of browser-native validation and additional
+                        JavaScript.</p>
+
+                    <p>HTML5 provides the <a
+                            href="https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation"
+                            target="_blank">&lsquo;Constraint Validation API&rsquo;</a>, which specifies input types for
+                        basic pre-built input validation, and further custom validation with the &lsquo;pattern&rsquo;
+                        attribute — via <a href="https://en.wikipedia.org/wiki/Regular_expression"
+                            target="_blank">&lsquo;regular expression&rsquo; (&lsquo;regex&rsquo;)</a>.</p>
+
+                    <p>I used <a href="https://en.wikipedia.org/wiki/Progressive_enhancement"
+                            target="_blank">&lsquo;progressive enhancement&rsquo;</a> to ensure data validation is
+                        always provided on the frontend, even if JavaScript is not available in the user&rsquo;s
+                        browser, but additional validation feedback is provided if JavaScript is available to improve
+                        the form&rsquo;s user experience (UX).</p>
+
+                    <p>The form fields themselves use the <code>required</code> attribute, with regex provided in the
+                        <code>pattern</code> attribute. </p>
+
+                    <p>This design pattern still supports optional form fields, as demonstrated by the phone number
+                        field.</p>
+
+                    <pre class="code-html"><code>
+&lt;div id="contact" class="contact-form"&gt;
+    &lt;form id="contact-form" action="#"&gt;
+
+        &lt;h2&gt;Get In Touch&lt;/h2&gt;
+        &lt;div class="contact-form__validation-event-delegator"&gt;
+            &lt;div class="contact-form__input-group"&gt;
+                &lt;label for="contact-form-name"&gt;Name&lt;/label&gt;
+                &lt;input type="text" id="contact-form-name" name="name" <b>required</b>
+                    placeholder="What's your name?"&gt;
+                &lt;span class="contact-form__error-indicator contact-form__error-indicator--hidden"&gt;Don't forget to leave your name&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div class="contact-form__input-group"&gt;
+                &lt;label for="contact-form-email"&gt;Email&lt;/label&gt;
+                &lt;input type="email" id="contact-form-email" name="email" <b>required
+                    pattern="^[a-zA-Z0-9._\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,6}$"</b>
+                    placeholder="What's your email address?"&gt;
+                &lt;span class="contact-form__error-indicator contact-form__error-indicator--hidden"&gt;Don't forget to leave your correct email address&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div class="contact-form__input-group"&gt;
+                &lt;label for="contact-form-phone"&gt;Phone &lt;i&gt;(optional)&lt;/i&gt;&lt;/label&gt;
+                &lt;input type="tel" id="contact-form-phone" name="phone"
+                    <b>pattern="(\+?\d{1,4}[\s\-]?)?(\(?[\d\s\-]{1,}?\)?[\s\-]?)?[\d\s\-]{5,15}"</b>
+                    placeholder=" What's your phone number?"&gt;
+                &lt;span class="contact-form__error-indicator contact-form__error-indicator--hidden"&gt;Your phone number seems miss-typed&lt;/span&gt;
+            &lt;/div&gt;
+
+            &lt;div class="contact-form__input-group"&gt;
+                &lt;label for="contact-form-message"&gt;Message&lt;/label&gt;
+                &lt;textarea id="contact-form-message" name="message" <b>required</b>
+                    placeholder="What would you like to say?"&gt;&lt;/textarea&gt;
+                &lt;span class="contact-form__error-indicator contact-form__error-indicator--hidden"&gt;Don't forget to leave a message&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="contact-form__input-group"&gt;
+            &lt;button type="submit"&gt;Submit&lt;/button&gt;
+        &lt;/div&gt;
+
+    &lt;/form&gt; 
+&lt;/div&gt;
+</code></pre>
+
+                    <p>In a linked JavaScript file, a combination of event listeners and utility functions provide a
+                        more comprehensive UX. We start by abstracting the actual logic of how to show & hide the
+                        &lsquo;error indicators&rsquo; underneath each form field (which is done using a class with
+                        <code>display: none</code>):
+                    </p>
+
+                    <pre class="code-javascript"><code>
+/* Utility functions to handle updating 'strong' signified state of form fields */
+
+function showErrorIndicator(inputField) {
+    inputField.parentElement.querySelector('.contact-form__error-indicator').classList.remove('contact-form__error-indicator--hidden');
+}
+
+function hideErrorIndicator(inputField) {
+    inputField.parentElement.querySelector('.contact-form__error-indicator').classList.add('contact-form__error-indicator--hidden');
+}
+                    </code></pre>
+
+                    <p>I used two levels of feedback: <strong>&lsquo;hard&rsquo;</strong> and
+                        <strong>&lsquo;soft&rsquo;</strong>. Soft is for inline, hard
+                        is on a field-by-field basis. We do this because we want to give the user immediate feedback
+                        while they are typing about whether the data they are providing will be accepted, but we
+                        understand that they haven&rsquo;t actually finished typing yet. When the user navigates away
+                        from the form field, we want to give them &lsquo;hard&rsquo; feedback so they can correct their
+                        input as they go, instead of having to do it all when they try to submit the form. This approach
+                        attempts to maximise useful feedback to the user without distracting or overloading them.
+                    </p>
+
+                    <p>I created utility classes to manage these &lsquo;hard&rsquo; feedback states, to abstract the
+                        inner workings:</p>
+
+                    <pre class="code-javascript"><code>
+// Signify value is definitely valid 
+function indicateHardValid(inputField) {
+    inputField.classList.add('contact-form__input-field--definitely-valid');
+}
+
+// Signify value needs changing before submission
+function indicateHardInvalid(inputField) {
+    inputField.classList.add('contact-form__input-field--needs-changing');
+}
+
+// Remove strong visual signifiers on the form field
+function removeHardValidate(inputField) {
+    inputField.classList.remove('contact-form__input-field--definitely-valid', 'contact-form__input-field--needs-changing', 'contact-form__input-field--presubmission-invalid');
+    hideErrorIndicator(inputField);
+}
+                    </code></pre>
+
+                    <p>Next we add event listeners to the form itself. There are lots of different ways to do this, but
+                        for
+                        this form I created a <code>&lt;div&gt;</code> element that is &lsquo;delegated&rsquo; event
+                        listeners for
+                        multiple
+                        form fields —
+                        rather than creating a separate event listener for each field.</p>
+
+                    <p>We want to use the in-built, native <code>Element.checkValidity()</code> method, which is part of
+                        the
+                        &lsquo;Constraint Validation API&rsquo; mentioned earlier. This checks whether the value of a
+                        field is
+                        valid, using the default type validation and other additional parameters that we can set as
+                        attributes in the HTML — remember: we want our form to validate to a minimum baseline even
+                        without JavaScript.</p>
+
+                    <pre class="code-javascript"><code>
+/* Event listeners for additional validation */
+
+// Grab the contact form
+const contactForm = document.querySelector('form#contact-form');
+// Grab the &lt;div&gt; that contains form fields but not the submit &lt;button&gt;
+const eventDelegatorDiv = contactForm.querySelector('.contact-form__validation-event-delegator');
+
+// Per-field validation bound to 'focusout' event on form fields
+eventDelegatorDiv.addEventListener('focusout', event => {
+    
+    if (<b>event.target.checkValidity()</b>) {
+        indicateHardValid(event.target);
+        hideErrorIndicator(event.target);
+    }
+    // Don't need an Else clause here, 
+    // because `event.target.checkValidity()` causes an 'invalid' event if false
+});
+
+// If the user returns to a form field 
+eventDelegatorDiv.addEventListener('focusin', event => {
+    
+    // Remove strong visual signifiers on the form field
+    removeHardValidate(event.target);
+});
+                    </code></pre>
+
+                    <p>&lsquo;invalid&rsquo; events do not &lsquo;bubble&rsquo; up the DOM, so we need to switch our
+                        event listener to trigger
+                        on the <a
+                            href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#event_capture"
+                            target="_blank">&lsquo;capture phase&rsquo;</a> instead.</p>
+
+
+
+                    <pre class="code-javascript"><code>
+// Overwrite the existing 'invalid' event with custom functionality
+eventDelegatorDiv.addEventListener('invalid', event => {
+
+    // Prevent the browser-native feedback bubbles from appearing
+    event.preventDefault();
+
+    // Signify invalid value needs changing
+    indicateHardInvalid(event.target);
+}, {
+    <b>// Capture-phase event, not a bubble-phase event
+    capture: true</b>
+});
+                    </code></pre>
+
+                    <p>In order to make use of the form&rsquo;s &lsquo;submit&rsquo; event, we give the form a
+                        &lsquo;<code>novalidate</code>&rsquo; attribute.
+                        It&rsquo;s important we do this in our JavaScript instead of our HTML to fit with our
+                        &lsquo;progressive
+                        enhancement&rsquo; approach.</p>
+
+                    <p>We can include additional &lsquo;pre-submission&rsquo; validation rules in this
+                        &lsquo;submit&rsquo; event handler. Using &lsquo;submit&rsquo; on the form, instead of
+                        &lsquo;click&rsquo; on the button, means pressing enter on a text input still triggers a
+                        &lsquo;submit&rsquo; event. By using an If statement, bound to
+                        <code>contactForm.checkValidity()</code>, we are essentially 'rebuilding' the original
+                        browser-native constraint validation, but now we can customise it to our liking (or business
+                        logic).
+                    </p>
+
+                    <pre class="code-javascript"><code>
+// Deactivate default pre-submission validation behaviour
+// (Browser native validation will still occur if JavaScript is disabled)
+contactForm.setAttribute('novalidate', true);
+
+// Final pre-submission validation
+contactForm.addEventListener('submit', event => {
+
+    if (!contactForm.checkValidity()) {
+
+        // Manually prevent the form from submitting
+        event.preventDefault();
+        
+        contactForm.querySelectorAll(':invalid').forEach(invalidField => {
+            // Add a red border around each invalid field
+            invalidField.classList.add('contact-form__input-field--presubmission-invalid');
+            // Show the error indicator underneath each invalid field
+            showErrorIndicator(invalidField);
+        });
+
+        // Ensure focus goes to the first invalid form field
+        const nextInvalidFieldToFillIn = contactForm.querySelectorAll(':invalid')[0];
+        nextInvalidFieldToFillIn.focus();
+        showErrorIndicator(nextInvalidFieldToFillIn);
+
+    } else {
+        // If validation passes, submit the form!
+        contactForm.submit();
+    }
+});
+                    </code></pre>
+
+                    <p>In our SCSS, we can assign a variety of styling rules to handle &lsquo;live&rsquo; validation.
+                        I&rsquo;ve named
+                        the modifier classes after what they are designed to signify in the mind of the user.</p>
+
+                    <pre class="code-scss"><code>
+// Input is being used and value is not valid
+input:not(:placeholder-shown):invalid,
+textarea:not(:placeholder-shown):invalid {
+    border-color: $soft-alert-orange;
+}
+
+// Input has been used and value is invalid
+input:not(:placeholder-shown).contact-form__input-field--needs-changing,
+textarea:not(:placeholder-shown).contact-form__input-field--needs-changing {
+    border-color: $hard-alert-red;
+}
+
+// Input is being used
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: $feedback-yellow;
+}
+
+// Input is being used and input given will be valid 
+input:not(:placeholder-shown):valid,
+textarea:not(:placeholder-shown):valid {
+    border-color: $soft-success-green;
+}
+
+input:not(:placeholder-shown).contact-form__input-field--definitely-valid,
+textarea:not(:placeholder-shown).contact-form__input-field--definitely-valid {
+    border-color: $hard-success-green;
+}
+
+// Input can't be submitted until the value is valid
+input.contact-form__input-field--presubmission-invalid,
+textarea.contact-form__input-field--presubmission-invalid {
+    border-color: $hard-alert-red;
+}
+                    </code></pre>
+
+                    <p>This approach attempts adding a modular, maintainable, but flexible and potentially very
+                        sophisticated
+                        set of UX features to the webform, while maintaining &lsquo;good-enough&rsquo; data validation
+                        even without
+                        JavaScript!</p>
 
                 </main>
             </div>

@@ -2,12 +2,15 @@ body {
     font-size: 1rem;
 }
 
-body, input, textarea {
+body,
+input,
+textarea {
     color: $base-black;
-    font-family: 'Work Sans', Helvetica, Arial, sans-serif; 
+    font-family: 'Work Sans', Helvetica, Arial, sans-serif;
 }
 
-h1, h2 {
+h1,
+h2 {
     text-align: center;
     letter-spacing: 0.02em;
 }
@@ -33,15 +36,18 @@ p {
 a {
     color: $primary-blue;
     text-decoration: none;
+
     &:hover {
         text-decoration: underline;
     }
+
     &:visited {
         color: darken($primary-blue, 20%);
     }
 }
 
-b, strong {
+b,
+strong {
     font-weight: 600;
 }
 
@@ -49,7 +55,54 @@ li {
     margin-bottom: 0.5em;
 }
 
-input::placeholder, textarea::placeholder {
+input::placeholder,
+textarea::placeholder {
     font-style: italic;
     color: lighten($base-black, 50%);
+}
+
+code,
+pre {
+    font-family: 'JetBrains Mono', monospace;
+    background-color: lighten($base-black, 82.5%);
+    color: darken($primary-blue, 40%);
+    font-size: 0.8rem;
+}
+
+code {
+    padding: 0.25ch 0.5ch;
+}
+
+pre {
+    padding: 1.5rem;
+    overflow-x: scroll;
+    margin: 1.5rem 0;
+    // font-size: 0.8rem;
+
+    b {
+        color: darken($primary-blue, 25%);
+        font-weight: 600;
+    }
+}
+
+pre:before {
+    display: block;
+    padding: 1ch;
+    // margin-bottom: 2rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-style: italic;
+    color: lighten($base-black, 25%);
+}
+
+pre.code-html:before {
+    content: "HTML";
+}
+
+pre.code-scss:before {
+    content: "SCSS";
+}
+
+pre.code-javascript:before {
+    content: "JavaScript";
 }

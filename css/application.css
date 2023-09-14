@@ -36,12 +36,15 @@ body {
   font-size: 1rem;
 }
 
-body, input, textarea {
+body,
+input,
+textarea {
   color: #0C090D;
   font-family: "Work Sans", Helvetica, Arial, sans-serif;
 }
 
-h1, h2 {
+h1,
+h2 {
   text-align: center;
   letter-spacing: 0.02em;
 }
@@ -75,7 +78,8 @@ a:visited {
   color: #2b7a8d;
 }
 
-b, strong {
+b,
+strong {
   font-weight: 600;
 }
 
@@ -83,9 +87,53 @@ li {
   margin-bottom: 0.5em;
 }
 
-input::placeholder, textarea::placeholder {
+input::placeholder,
+textarea::placeholder {
   font-style: italic;
   color: #9575a0;
+}
+
+code,
+pre {
+  font-family: "JetBrains Mono", monospace;
+  background-color: #e0d7e3;
+  color: #13363f;
+  font-size: 0.8rem;
+}
+
+code {
+  padding: 0.25ch 0.5ch;
+}
+
+pre {
+  padding: 1.5rem;
+  overflow-x: scroll;
+  margin: 1.5rem 0;
+}
+pre b {
+  color: #25697a;
+  font-weight: 600;
+}
+
+pre:before {
+  display: block;
+  padding: 1ch;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #523d58;
+}
+
+pre.code-html:before {
+  content: "HTML";
+}
+
+pre.code-scss:before {
+  content: "SCSS";
+}
+
+pre.code-javascript:before {
+  content: "JavaScript";
 }
 
 .no-line-break {
@@ -204,6 +252,9 @@ input::placeholder, textarea::placeholder {
   max-width: 65ch;
   padding: 0 2rem;
   margin: 0 auto;
+}
+.subpage__layout-horizontal-container main {
+  margin-bottom: 3rem;
 }
 
 .primary-nav__menu-button {
@@ -460,6 +511,7 @@ input::placeholder, textarea::placeholder {
 
 .subpage__heading-group {
   margin-top: 6rem;
+  margin-bottom: 3rem;
 }
 .subpage__heading-group h1,
 .subpage__heading-group p {
@@ -472,6 +524,10 @@ input::placeholder, textarea::placeholder {
   color: #2b7a8d;
   font-size: 1.5rem;
   font-weight: 600;
+}
+
+.subpage__content--coding-snippets p {
+  text-align: left;
 }
 
 .subpage__image-container {

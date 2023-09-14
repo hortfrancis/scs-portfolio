@@ -1,6 +1,7 @@
 .subpage__heading-group {
 
     margin-top: 6rem;
+    margin-bottom: 3rem;
 
     h1,
     p {
@@ -17,6 +18,9 @@
     font-weight: 600;
 }
 
+.subpage__content--coding-snippets p {
+    text-align: left;
+}
 
 .subpage__image-container {
 
