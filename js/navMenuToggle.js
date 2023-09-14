@@ -1,3 +1,6 @@
+/*
+    Show/hide the full-screen menu at narrow viewports
+*/
 const burgerLines = document.querySelector('g.primary-nav__menu-button-burger-lines');
 const crossLines = document.querySelector('g.primary-nav__menu-button-cross-lines');
 const primaryNav = document.querySelector('.primary-nav');

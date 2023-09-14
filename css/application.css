@@ -1,3 +1,4 @@
+@charset "UTF-8";
 *,
 *:before,
 *:after {
@@ -84,6 +85,7 @@ li {
 
 input::placeholder, textarea::placeholder {
   font-style: italic;
+  color: #9575a0;
 }
 
 .no-line-break {
@@ -386,7 +388,7 @@ input::placeholder, textarea::placeholder {
 }
 
 .contact-form__input-group {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 .contact-form__input-group label {
   display: block;
@@ -397,8 +399,9 @@ input::placeholder, textarea::placeholder {
 .contact-form__input-group label:after {
   content: ":";
 }
-.contact-form__input-group label:focus {
-  outline: 1rem solid #F9C22E;
+.contact-form__input-group label i {
+  color: #9575a0;
+  font-weight: normal;
 }
 .contact-form__input-group input,
 .contact-form__input-group textarea {
@@ -408,12 +411,51 @@ input::placeholder, textarea::placeholder {
   border: 0.5ex solid #0C090D;
   font-size: 1.2rem;
 }
-.contact-form__input-group input:focus,
-.contact-form__input-group textarea:focus {
-  outline: 1rem solid #F9C22E;
-}
 .contact-form__input-group button {
   font-size: 1.5rem;
+}
+.contact-form__input-group input:not(:placeholder-shown):invalid,
+.contact-form__input-group textarea:not(:placeholder-shown):invalid {
+  border-color: #CC8328;
+}
+.contact-form__input-group input:not(:placeholder-shown).contact-form__input-field--needs-changing,
+.contact-form__input-group textarea:not(:placeholder-shown).contact-form__input-field--needs-changing {
+  border-color: #E01A4F;
+}
+.contact-form__input-group input:focus,
+.contact-form__input-group textarea:focus {
+  outline: none;
+  border-color: #F9C22E;
+}
+.contact-form__input-group input:not(:placeholder-shown):valid,
+.contact-form__input-group textarea:not(:placeholder-shown):valid {
+  border-color: #7BCC98;
+}
+.contact-form__input-group input:not(:placeholder-shown).contact-form__input-field--definitely-valid,
+.contact-form__input-group textarea:not(:placeholder-shown).contact-form__input-field--definitely-valid {
+  border-color: #399359;
+}
+.contact-form__input-group input.contact-form__input-field--presubmission-invalid,
+.contact-form__input-group textarea.contact-form__input-field--presubmission-invalid {
+  border-color: #E01A4F;
+}
+
+.contact-form__error-indicator {
+  color: #E01A4F;
+  font-size: 1rem;
+  margin: 0.5rem;
+  font-style: italic;
+  font-weight: bold;
+  position: absolute;
+}
+.contact-form__error-indicator:before {
+  content: "▲";
+  margin-right: 0.5em;
+  font-style: normal;
+}
+
+.contact-form__error-indicator--hidden {
+  display: none;
 }
 
 .subpage__heading-group {

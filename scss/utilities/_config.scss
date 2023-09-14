@@ -4,7 +4,11 @@ $base-white: #FFF;
 $primary-blue: #53B3CB;
 $secondary-blue: #E6FAFC; 
 $feedback-yellow:  #F9C22E;
-$alert-red: #E01A4F;
+$hard-alert-red: #E01A4F;
+$soft-alert-orange: #CC8328;
+$hard-success-green: #399359;
+$soft-success-green: #7BCC98;
+
 
 // Breakpoint values for viewport width
 $breakpoints: (

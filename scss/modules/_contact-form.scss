@@ -1,6 +1,6 @@
 .contact-form__input-group {
 
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 
     label {
         display: block;
@@ -13,8 +13,9 @@
             content: ':';
         }
 
-        &:focus {
-            outline: 1rem solid $feedback-yellow;
+        i {
+            color: lighten($base-black, 50%);
+            font-weight: normal;
         }
     }
 
@@ -25,15 +26,68 @@
         padding: 1em;
         border: 0.5ex solid $base-black;
         font-size: 1.2rem;
-
-        &:focus {
-            outline: 1rem solid $feedback-yellow;
-        }
     }
 
     button {
         @extend %button;
-
         font-size: 1.5rem;
     }
+
+    // Input is being used and value is not valid
+    input:not(:placeholder-shown):invalid,
+    textarea:not(:placeholder-shown):invalid {
+        border-color: $soft-alert-orange;
+    }
+
+    // Input has been used and value is invalid
+    input:not(:placeholder-shown).contact-form__input-field--needs-changing,
+    textarea:not(:placeholder-shown).contact-form__input-field--needs-changing {
+        border-color: $hard-alert-red;
+    }
+
+    // Input is being used
+    input:focus,
+    textarea:focus {
+        outline: none;
+        border-color: $feedback-yellow;
+    }
+
+    // Input is being used and input given will be valid 
+    input:not(:placeholder-shown):valid,
+    textarea:not(:placeholder-shown):valid {
+        border-color: $soft-success-green;
+    }
+
+    input:not(:placeholder-shown).contact-form__input-field--definitely-valid,
+    textarea:not(:placeholder-shown).contact-form__input-field--definitely-valid {
+        border-color: $hard-success-green;
+    }
+
+    // Input can't be submitted until the value is valid
+    input.contact-form__input-field--presubmission-invalid,
+    textarea.contact-form__input-field--presubmission-invalid {
+        border-color: $hard-alert-red;
+    }
+}
+
+// Form validation error indicator
+.contact-form__error-indicator {
+
+    color: $hard-alert-red;
+    font-size: 1rem;
+    margin: 0.5rem;
+    font-style: italic;
+    font-weight: bold;
+    position: absolute;
+
+    &:before {
+        // Red triangle pointing upwards
+        content: "▲";
+        margin-right: 0.5em;
+        font-style: normal;
+    }
+}
+
+.contact-form__error-indicator--hidden {
+    display: none;
 }

@@ -172,29 +172,44 @@
             </section>
 
             <div id="contact" class="contact-form">
-                <form>
+                <form id="contact-form" action="#">
 
                     <h2>Get In Touch</h2>
+                    <div class="contact-form__validation-event-delegator">
+                        <div class="contact-form__input-group">
+                            <label for="contact-form-name">Name</label>
+                            <input type="text" id="contact-form-name" name="name" required
+                                placeholder="What's your name?">
+                            <span class="contact-form__error-indicator contact-form__error-indicator--hidden">Don't forget to leave your name</span>
+                        </div>
 
-                    <div class="contact-form__input-group">
-                        <label for="contact-form-name">Name</label>
-                        <input type="text" id="contact-form-name" name="name" placeholder="What's your name?">
+                        <div class="contact-form__input-group">
+                            <label for="contact-form-email">Email</label>
+                            <input type="email" id="contact-form-email" name="email" required
+                                pattern="^[a-zA-Z0-9._\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,6}$"
+                                placeholder="What's your email address?">
+                            <span class="contact-form__error-indicator contact-form__error-indicator--hidden">Don't forget to leave your correct email address</span>
+                        </div>
+
+                        <div class="contact-form__input-group">
+                            <label for="contact-form-phone">Phone <i>(optional)</i></label>
+                            <input type="tel" id="contact-form-phone" name="phone"
+                                pattern="(\+?\d{1,4}[\s\-]?)?(\(?[\d\s\-]{1,}?\)?[\s\-]?)?[\d\s\-]{5,15}"
+                                placeholder=" What's your phone number?">
+                            <span class="contact-form__error-indicator contact-form__error-indicator--hidden">Your phone number seems miss-typed</span>
+                        </div>
+
+                        <div class="contact-form__input-group">
+                            <label for="contact-form-message">Message</label>
+                            <textarea id="contact-form-message" name="message" required
+                                placeholder="What would you like to say?"></textarea>
+                            <span class="contact-form__error-indicator contact-form__error-indicator--hidden">Don't forget to leave a message</span>
+                        </div>
                     </div>
-
-                    <div class="contact-form__input-group">
-                        <label for="contact-form-email">Email</label>
-                        <input type="email" id="contact-form-email" name="email"
-                            placeholder="What's your email address?">
-                    </div>
-
-                    <div class="contact-form__input-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" placeholder="What would you like to say?"></textarea>
-                    </div>
-
                     <div class="contact-form__input-group">
                         <button type="submit">Submit</button>
                     </div>
+
 
                 </form>
             </div>
@@ -208,7 +223,8 @@
     </div>
 
     <!-- JavaScript script import -->
-    <script src="js/main.js"></script>
+    <script src="js/navMenuToggle.js"></script>
+    <script src="js/contactFormValidation.js"></script>
 </body>
 
 </html>
