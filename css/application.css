@@ -258,6 +258,7 @@ pre.code-javascript:before {
 
 .subpage__layout-horizontal-container {
   max-width: 65ch;
+  width: 100%;
   padding: 0 2rem;
   margin: 0 auto;
 }
@@ -547,6 +548,11 @@ pre.code-javascript:before {
 
 .subpage__content--coding-snippets p {
   text-align: left;
+}
+
+.subpage__content--coding-snippets pre code {
+  display: inline-block;
+  margin-right: 1.5rem;
 }
 
 .subpage__image-container {

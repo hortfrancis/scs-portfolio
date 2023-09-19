@@ -2,6 +2,8 @@
     
     // Max width set to the approximate optimal character count per line
     max-width: 65ch;
+    // Width value also needed to prevent `pre code` blocks from overflowing narrow viewport widths
+    width: 100%;
     padding: 0 2rem;
     margin: 0 auto;
 
