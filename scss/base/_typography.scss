@@ -34,7 +34,7 @@ p {
 }
 
 a {
-    color: $primary-blue;
+    color: darken($primary-blue, 10%);
     text-decoration: none;
 
     &:hover {
@@ -42,7 +42,7 @@ a {
     }
 
     &:visited {
-        color: darken($primary-blue, 20%);
+        color: darken($primary-blue, 25%);
     }
 }
 

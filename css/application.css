@@ -68,14 +68,14 @@ p {
 }
 
 a {
-  color: #53B3CB;
+  color: #379bb4;
   text-decoration: none;
 }
 a:hover {
   text-decoration: underline;
 }
 a:visited {
-  color: #2b7a8d;
+  color: #25697a;
 }
 
 b,
@@ -541,7 +541,7 @@ pre.code-javascript:before {
 }
 
 .subpage__subheading {
-  color: #2b7a8d;
+  color: #379bb4;
   font-size: 1.5rem;
   font-weight: 600;
 }
