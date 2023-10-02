@@ -551,6 +551,30 @@ pre.code-javascript:before {
   display: none;
 }
 
+.contact-form__success-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.contact-form__success-indicator .contact-form__success-indicator-text {
+  display: block;
+  padding: 3rem;
+  background-color: #399359;
+  color: #FFF;
+}
+
+.contact-form__success-indicator--visible {
+  opacity: 1;
+}
+
 .footer__back-to-top-link {
   display: flex;
   align-items: center;

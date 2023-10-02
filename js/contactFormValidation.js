@@ -37,7 +37,7 @@ const eventDelegatorDiv = contactForm.querySelector('.contact-form__validation-e
 
 // Per-field validation bound to 'focusout' event on form fields
 eventDelegatorDiv.addEventListener('focusout', event => {
-    
+
     if (event.target.checkValidity()) {
         indicateHardValid(event.target);
         hideErrorIndicator(event.target);
@@ -48,7 +48,7 @@ eventDelegatorDiv.addEventListener('focusout', event => {
 
 // If the user returns to a form field 
 eventDelegatorDiv.addEventListener('focusin', event => {
-    
+
     // Remove strong visual signifiers on the form field
     removeHardValidate(event.target);
 });
@@ -78,11 +78,11 @@ contactForm.setAttribute('novalidate', true);
 // Final pre-submission validation
 contactForm.addEventListener('submit', event => {
 
+    // Manually prevent the form from submitting
+    event.preventDefault();
+
     if (!contactForm.checkValidity()) {
 
-        // Manually prevent the form from submitting
-        event.preventDefault();
-        
         contactForm.querySelectorAll(':invalid').forEach(invalidField => {
             // Add a red border around each invalid field
             invalidField.classList.add('contact-form__input-field--presubmission-invalid');
@@ -97,6 +97,14 @@ contactForm.addEventListener('submit', event => {
 
     } else {
         // If validation passes, submit the form!
-        contactForm.submit();
+        // contactForm.submit();
+
+        console.log('Would now submit the form!');
+
+        // The code to display a success message is in js/contactFormSuccessIndicator.js
+        createFormSuccessIndicator();
+
+        // Clear the form fields
+        contactForm.reset();
     }
 });
