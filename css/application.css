@@ -9,7 +9,7 @@ body {
   margin: 0;
 }
 
-.contact-form__input-group button, .projects__card a {
+.footer__back-to-top-link, .contact-form__input-group button, .projects__card a {
   display: inline-block;
   padding: 1ex 1em;
   border: 0.2em solid #2b7a8d;
@@ -18,17 +18,17 @@ body {
   font-weight: 600;
   cursor: pointer;
 }
-.contact-form__input-group button:hover, .projects__card a:hover, .contact-form__input-group button:focus, .projects__card a:focus {
+.footer__back-to-top-link:hover, .contact-form__input-group button:hover, .projects__card a:hover, .footer__back-to-top-link:focus, .contact-form__input-group button:focus, .projects__card a:focus {
   background-color: #F9C22E;
   color: white;
   border: 0.2em solid #bc8a05;
   text-decoration: none;
 }
-.contact-form__input-group button:active, .projects__card a:active {
+.footer__back-to-top-link:active, .contact-form__input-group button:active, .projects__card a:active {
   background-color: #bc8a05;
   color: white;
 }
-.contact-form__input-group button:visited, .projects__card a:visited {
+.footer__back-to-top-link:visited, .contact-form__input-group button:visited, .projects__card a:visited {
   color: #FFF;
 }
 
@@ -254,6 +254,12 @@ pre.code-javascript:before {
 
 .contact-form {
   padding: 1rem;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
 }
 
 .subpage__layout-horizontal-container {
@@ -527,6 +533,17 @@ pre.code-javascript:before {
 
 .contact-form__error-indicator--hidden {
   display: none;
+}
+
+.footer__back-to-top-link {
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+}
+.footer__back-to-top-link .icon {
+  fill: #FFF;
+  margin-left: 0.5em;
+  margin-right: 0;
 }
 
 .subpage__heading-group {

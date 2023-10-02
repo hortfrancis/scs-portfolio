@@ -1,0 +1,15 @@
+.footer__back-to-top-link {
+
+    @extend %button; 
+    display: flex;
+
+    align-items: center;;
+
+    .icon {
+        fill: $base-white;
+        margin-left: 0.5em;
+        margin-right: 0;
+    }
+
+    font-size: 0.8rem;
+}
