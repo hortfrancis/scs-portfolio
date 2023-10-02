@@ -9,6 +9,11 @@ body {
   margin: 0;
 }
 
+ul {
+  padding: 0;
+  margin: 0;
+}
+
 .footer__back-to-top-link, .contact-form__input-group button, .projects__card a {
   display: inline-block;
   padding: 1ex 1em;
@@ -260,6 +265,13 @@ pre.code-javascript:before {
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;
+}
+
+.subpage ul {
+  padding: 1.2rem;
+}
+.subpage hr {
+  border: 0.1rem solid #53B3CB;
 }
 
 .subpage__layout-horizontal-container {
@@ -561,6 +573,13 @@ pre.code-javascript:before {
   color: #379bb4;
   font-size: 1.5rem;
   font-weight: 600;
+}
+
+.subpage__subheading--small {
+  margin: 1.5rem 0 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: left;
 }
 
 .subpage__content--coding-snippets p {
