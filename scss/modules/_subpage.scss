@@ -61,8 +61,13 @@
 
 .subpage__accordion-section-open-close-button {
 
-    height: 4rem;
+    // Need both width/height + min-width/min-height here 
+    // to keep the button the correct size at narrow and wide viewports
     width: 4rem;
+    height: 4rem;
+    min-width: 4rem;
+    min-height: 4rem;
+
     border: none;
     background-color: transparent;
     cursor: pointer;
