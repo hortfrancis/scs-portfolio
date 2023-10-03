@@ -1,4 +1,8 @@
 @charset "UTF-8";
+html {
+  scroll-behavior: smooth;
+}
+
 *,
 *:before,
 *:after {
@@ -229,6 +233,10 @@ pre.code-javascript:before {
   align-items: center;
   height: 100vh;
   background-color: #53B3CB;
+}
+
+#projects {
+  padding-top: 0.01rem;
 }
 
 .projects__layout-grid-container {
