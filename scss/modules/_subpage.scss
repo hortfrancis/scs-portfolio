@@ -26,15 +26,74 @@
     text-align: left;
 }
 
-.subpage__content--coding-snippets p {
-    text-align: left;
+.subpage__content--coding-snippets {
+
+    h2 {
+        margin-left: 0;
+        margin-right: 0;
+        font-size: 2rem;
+        text-align: left;
+    }
+
+    p {
+        text-align: left;
+    }
+
+    pre code {
+        // Add space between the end of code lines and the `pre` block
+        display: inline-block;
+        margin-right: 1.5rem;
+    }
 }
 
-.subpage__content--coding-snippets pre code {
+.subpage__accordion-section-heading-group {
+
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.subpage__accordion-section-content {
     
-    // Add space between the end of code lines and the `pre` block
-    display: inline-block;
-    margin-right: 1.5rem;
+    // Default: hide the content
+    display: none;
+}
+
+.subpage__accordion-section-open-close-button {
+
+    height: 4rem;
+    width: 4rem;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    .icon {
+        fill: $base-black;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.2s ease-in-out;
+
+        &:hover {
+            fill: $feedback-yellow;
+        }
+
+        &:active {
+            fill: $primary-blue;
+        }
+    }
+}
+
+.subpage__accordion-section--open {
+
+    .subpage__accordion-section-open-close-button .icon {
+        // Make the arrow point down instead of right
+        transform: rotate(90deg);
+    }
+
+    .subpage__accordion-section-content {
+        // Show the content when the open/close button is pressed 
+        display: block;
+    }
 }
 
 .subpage__image-container {

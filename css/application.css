@@ -618,13 +618,55 @@ pre.code-javascript:before {
   text-align: left;
 }
 
+.subpage__content--coding-snippets h2 {
+  margin-left: 0;
+  margin-right: 0;
+  font-size: 2rem;
+  text-align: left;
+}
 .subpage__content--coding-snippets p {
   text-align: left;
 }
-
 .subpage__content--coding-snippets pre code {
   display: inline-block;
   margin-right: 1.5rem;
+}
+
+.subpage__accordion-section-heading-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.subpage__accordion-section-content {
+  display: none;
+}
+
+.subpage__accordion-section-open-close-button {
+  height: 4rem;
+  width: 4rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.subpage__accordion-section-open-close-button .icon {
+  fill: #0C090D;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.2s ease-in-out;
+}
+.subpage__accordion-section-open-close-button .icon:hover {
+  fill: #F9C22E;
+}
+.subpage__accordion-section-open-close-button .icon:active {
+  fill: #53B3CB;
+}
+
+.subpage__accordion-section--open .subpage__accordion-section-open-close-button .icon {
+  transform: rotate(90deg);
+}
+.subpage__accordion-section--open .subpage__accordion-section-content {
+  display: block;
 }
 
 .subpage__image-container {

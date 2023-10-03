@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>Code Snippets | Alex Hort-Francis | SCS Portfolio</title>
 
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
@@ -122,31 +122,54 @@
 
                 <main class="subpage__content--coding-snippets">
 
-                    <p>For the &lsquo;Contact&rsquo; form on the homepage of this portfolio site, I chose to dig deeply
-                        into form validation techniques, using a combination of browser-native validation and additional
-                        JavaScript.</p>
+                    <section class="subpage__accordion-section">
 
-                    <p>HTML5 provides the <a
-                            href="https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation"
-                            target="_blank">&lsquo;Constraint Validation API&rsquo;</a>, which specifies input types for
-                        basic pre-built input validation, and further custom validation with the &lsquo;pattern&rsquo;
-                        attribute — via <a href="https://en.wikipedia.org/wiki/Regular_expression"
-                            target="_blank">&lsquo;regular expression&rsquo; (&lsquo;regex&rsquo;)</a>.</p>
+                        <div class="subpage__accordion-section-heading-group">
+                            <button class="subpage__accordion-section-open-close-button">
+                                <svg class="icon">
+                                    <use href="icons/symbol-defs.svg#icon-arrow-right"></use>
+                                </svg>
+                            </button>
+                            <h2>Form Validation & Progressive Enhancement</h2>
+                        </div>
 
-                    <p>I used <a href="https://en.wikipedia.org/wiki/Progressive_enhancement"
-                            target="_blank">&lsquo;progressive enhancement&rsquo;</a> to ensure data validation is
-                        always provided on the frontend, even if JavaScript is not available in the user&rsquo;s
-                        browser, but additional validation feedback is provided if JavaScript is available to improve
-                        the form&rsquo;s user experience (UX).</p>
+                        <div class="subpage__accordion-section-content">
 
-                    <p>The form fields themselves use the <code>required</code> attribute, with regex provided in the
-                        <code>pattern</code> attribute.
-                    </p>
+                            <p>For the &lsquo;Contact&rsquo; form on the homepage of this portfolio site, I chose to dig
+                                deeply
+                                into form validation techniques, using a combination of browser-native validation and
+                                additional
+                                JavaScript.</p>
 
-                    <p>This design pattern still supports optional form fields, as demonstrated by the phone number
-                        field.</p>
+                            <p>HTML5 provides the <a
+                                    href="https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation"
+                                    target="_blank">&lsquo;Constraint Validation API&rsquo;</a>, which specifies input
+                                types
+                                for
+                                basic pre-built input validation, and further custom validation with the
+                                &lsquo;pattern&rsquo;
+                                attribute — via <a href="https://en.wikipedia.org/wiki/Regular_expression"
+                                    target="_blank">&lsquo;regular expression&rsquo; (&lsquo;regex&rsquo;)</a>.</p>
 
-                    <pre class="code-html"><code>
+                            <p>I used <a href="https://en.wikipedia.org/wiki/Progressive_enhancement"
+                                    target="_blank">&lsquo;progressive enhancement&rsquo;</a> to ensure data validation
+                                is
+                                always provided on the frontend, even if JavaScript is not available in the user&rsquo;s
+                                browser, but additional validation feedback is provided if JavaScript is available to
+                                improve
+                                the form&rsquo;s user experience (UX).</p>
+
+                            <p>The form fields themselves use the <code>required</code> attribute, with regex provided
+                                in
+                                the
+                                <code>pattern</code> attribute.
+                            </p>
+
+                            <p>This design pattern still supports optional form fields, as demonstrated by the phone
+                                number
+                                field.</p>
+
+                            <pre class="code-html"><code>
 &lt;div id="contact" class="contact-form"&gt;
     &lt;form id="contact-form" action="#"&gt;
 
@@ -190,13 +213,16 @@
 &lt;/div&gt;
 </code></pre>
 
-                    <p>In a linked JavaScript file, a combination of event listeners and utility functions provide a
-                        more comprehensive UX. We start by abstracting the actual logic of how to show & hide the
-                        &lsquo;error indicators&rsquo; underneath each form field (which is done using a class with
-                        <code>display: none</code>):
-                    </p>
+                            <p>In a linked JavaScript file, a combination of event listeners and utility functions
+                                provide a
+                                more comprehensive UX. We start by abstracting the actual logic of how to show & hide
+                                the
+                                &lsquo;error indicators&rsquo; underneath each form field (which is done using a class
+                                with
+                                <code>display: none</code>):
+                            </p>
 
-                    <pre class="code-javascript"><code>
+                            <pre class="code-javascript"><code>
 /* Utility functions to handle updating 'strong' signified state of form fields */
 
 function showErrorIndicator(inputField) {
@@ -208,20 +234,27 @@ function hideErrorIndicator(inputField) {
 }
                     </code></pre>
 
-                    <p>I used two levels of feedback: <strong>&lsquo;hard&rsquo;</strong> and
-                        <strong>&lsquo;soft&rsquo;</strong>. Soft is for inline, hard
-                        is on a field-by-field basis. We do this because we want to give the user immediate feedback
-                        while they are typing about whether the data they are providing will be accepted, but we
-                        understand that they haven&rsquo;t actually finished typing yet. When the user navigates away
-                        from the form field, we want to give them &lsquo;hard&rsquo; feedback so they can correct their
-                        input as they go, instead of having to do it all when they try to submit the form. This approach
-                        attempts to maximise useful feedback to the user without distracting or overloading them.
-                    </p>
+                            <p>I used two levels of feedback: <strong>&lsquo;hard&rsquo;</strong> and
+                                <strong>&lsquo;soft&rsquo;</strong>. Soft is for inline, hard
+                                is on a field-by-field basis. We do this because we want to give the user immediate
+                                feedback
+                                while they are typing about whether the data they are providing will be accepted, but we
+                                understand that they haven&rsquo;t actually finished typing yet. When the user navigates
+                                away
+                                from the form field, we want to give them &lsquo;hard&rsquo; feedback so they can
+                                correct
+                                their
+                                input as they go, instead of having to do it all when they try to submit the form. This
+                                approach
+                                attempts to maximise useful feedback to the user without distracting or overloading
+                                them.
+                            </p>
 
-                    <p>I created utility classes to manage these &lsquo;hard&rsquo; feedback states, to abstract the
-                        inner workings:</p>
+                            <p>I created utility classes to manage these &lsquo;hard&rsquo; feedback states, to abstract
+                                the
+                                inner workings:</p>
 
-                    <pre class="code-javascript"><code>
+                            <pre class="code-javascript"><code>
 // Signify value is definitely valid 
 function indicateHardValid(inputField) {
     inputField.classList.add('contact-form__input-field--definitely-valid');
@@ -239,23 +272,31 @@ function removeHardValidate(inputField) {
 }
                     </code></pre>
 
-                    <p>Next we add event listeners to the form itself. There are lots of different ways to do this, but
-                        for
-                        this form I created a <code>&lt;div&gt;</code> element that is &lsquo;delegated&rsquo; event
-                        listeners for
-                        multiple
-                        form fields —
-                        rather than creating a separate event listener for each field.</p>
+                            <p>Next we add event listeners to the form itself. There are lots of different ways to do
+                                this,
+                                but
+                                for
+                                this form I created a <code>&lt;div&gt;</code> element that is &lsquo;delegated&rsquo;
+                                event
+                                listeners for
+                                multiple
+                                form fields —
+                                rather than creating a separate event listener for each field.</p>
 
-                    <p>We want to use the in-built, native <code>Element.checkValidity()</code> method, which is part of
-                        the
-                        &lsquo;Constraint Validation API&rsquo; mentioned earlier. This checks whether the value of a
-                        field is
-                        valid, using the default type validation and other additional parameters that we can set as
-                        attributes in the HTML — remember: we want our form to validate to a minimum baseline even
-                        without JavaScript.</p>
+                            <p>We want to use the in-built, native <code>Element.checkValidity()</code> method, which is
+                                part of
+                                the
+                                &lsquo;Constraint Validation API&rsquo; mentioned earlier. This checks whether the value
+                                of
+                                a
+                                field is
+                                valid, using the default type validation and other additional parameters that we can set
+                                as
+                                attributes in the HTML — remember: we want our form to validate to a minimum baseline
+                                even
+                                without JavaScript.</p>
 
-                    <pre class="code-javascript"><code>
+                            <pre class="code-javascript"><code>
 /* Event listeners for additional validation */
 
 // Grab the contact form
@@ -282,15 +323,16 @@ eventDelegatorDiv.addEventListener('focusin', event => {
 });
                     </code></pre>
 
-                    <p>&lsquo;invalid&rsquo; events do not &lsquo;bubble&rsquo; up the DOM, so we need to switch our
-                        event listener to trigger
-                        on the <a
-                            href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#event_capture"
-                            target="_blank">&lsquo;capture phase&rsquo;</a> instead.</p>
+                            <p>&lsquo;invalid&rsquo; events do not &lsquo;bubble&rsquo; up the DOM, so we need to switch
+                                our
+                                event listener to trigger
+                                on the <a
+                                    href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#event_capture"
+                                    target="_blank">&lsquo;capture phase&rsquo;</a> instead.</p>
 
 
 
-                    <pre class="code-javascript"><code>
+                            <pre class="code-javascript"><code>
 // Overwrite the existing 'invalid' event with custom functionality
 eventDelegatorDiv.addEventListener('invalid', event => {
 
@@ -305,22 +347,23 @@ eventDelegatorDiv.addEventListener('invalid', event => {
 });
                     </code></pre>
 
-                    <p>In order to make use of the form&rsquo;s &lsquo;submit&rsquo; event, we give the form a
-                        &lsquo;<code>novalidate</code>&rsquo; attribute.
-                        It&rsquo;s important we do this in our JavaScript instead of our HTML to fit with our
-                        &lsquo;progressive
-                        enhancement&rsquo; approach.</p>
+                            <p>In order to make use of the form&rsquo;s &lsquo;submit&rsquo; event, we give the form a
+                                &lsquo;<code>novalidate</code>&rsquo; attribute.
+                                It&rsquo;s important we do this in our JavaScript instead of our HTML to fit with our
+                                &lsquo;progressive
+                                enhancement&rsquo; approach.</p>
 
-                    <p>We can include additional &lsquo;pre-submission&rsquo; validation rules in this
-                        &lsquo;submit&rsquo; event handler. Using &lsquo;submit&rsquo; on the form, instead of
-                        &lsquo;click&rsquo; on the button, means pressing enter on a text input still triggers a
-                        &lsquo;submit&rsquo; event. By using an If statement, bound to
-                        <code>contactForm.checkValidity()</code>, we are essentially 'rebuilding' the original
-                        browser-native constraint validation, but now we can customise it to our liking (or business
-                        logic).
-                    </p>
+                            <p>We can include additional &lsquo;pre-submission&rsquo; validation rules in this
+                                &lsquo;submit&rsquo; event handler. Using &lsquo;submit&rsquo; on the form, instead of
+                                &lsquo;click&rsquo; on the button, means pressing enter on a text input still triggers a
+                                &lsquo;submit&rsquo; event. By using an If statement, bound to
+                                <code>contactForm.checkValidity()</code>, we are essentially 'rebuilding' the original
+                                browser-native constraint validation, but now we can customise it to our liking (or
+                                business
+                                logic).
+                            </p>
 
-                    <pre class="code-javascript"><code>
+                            <pre class="code-javascript"><code>
 // Deactivate default pre-submission validation behaviour
 // (Browser native validation will still occur if JavaScript is disabled)
 contactForm.setAttribute('novalidate', true);
@@ -352,11 +395,13 @@ contactForm.addEventListener('submit', event => {
 });
                     </code></pre>
 
-                    <p>In our SCSS, we can assign a variety of styling rules to handle &lsquo;live&rsquo; validation.
-                        I&rsquo;ve named
-                        the modifier classes after what they are designed to signify in the mind of the user.</p>
+                            <p>In our SCSS, we can assign a variety of styling rules to handle &lsquo;live&rsquo;
+                                validation.
+                                I&rsquo;ve named
+                                the modifier classes after what they are designed to signify in the mind of the user.
+                            </p>
 
-                    <pre class="code-scss"><code>
+                            <pre class="code-scss"><code>
 // Input is being used and value is not valid
 input:not(:placeholder-shown):invalid,
 textarea:not(:placeholder-shown):invalid {
@@ -394,11 +439,16 @@ textarea.contact-form__input-field--presubmission-invalid {
 }
                     </code></pre>
 
-                    <p>This approach attempts adding a modular, maintainable, but flexible and potentially very
-                        sophisticated
-                        set of UX features to the webform, while maintaining &lsquo;good-enough&rsquo; data validation
-                        even without
-                        JavaScript!</p>
+                            <p>This approach attempts adding a modular, maintainable, but flexible and potentially very
+                                sophisticated
+                                set of UX features to the webform, while maintaining &lsquo;good-enough&rsquo; data
+                                validation
+                                even without
+                                JavaScript!</p>
+
+                        </div>
+
+                    </section>
 
                 </main>
             </div>
@@ -414,6 +464,7 @@ textarea.contact-form__input-field--presubmission-invalid {
 
     <!-- JavaScript script import -->
     <script src="js/navMenuToggle.js"></script>
+    <script src="js/subpageAccordionSectionOpenClose.js"></script>
 </body>
 
 </html>
