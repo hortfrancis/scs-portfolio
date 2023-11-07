@@ -28,6 +28,23 @@ function removeHardValidate(inputField) {
     hideErrorIndicator(inputField);
 }
 
+// Style invalid form fields
+function findAndStyleInvalidFormFields() {
+
+    contactForm.querySelectorAll(':invalid').forEach(invalidField => {
+        // Add a red border around each invalid field
+        invalidField.classList.add('contact-form__input-field--presubmission-invalid');
+        // Show the error indicator underneath each invalid field
+        showErrorIndicator(invalidField);
+    });
+
+    // Ensure focus goes to the first invalid form field
+    const nextInvalidFieldToFillIn = contactForm.querySelectorAll(':invalid')[0];
+    nextInvalidFieldToFillIn.focus();
+    showErrorIndicator(nextInvalidFieldToFillIn);
+}
+
+
 /* Event listeners for additional validation */
 
 // Grab the contact form
@@ -71,6 +88,7 @@ eventDelegatorDiv.addEventListener('input', event => {
     hideErrorIndicator(event.target);
 });
 
+
 // Deactivate default pre-submission validation behaviour
 // (Browser native validation will still occur if JavaScript is disabled)
 contactForm.setAttribute('novalidate', true);
@@ -78,33 +96,17 @@ contactForm.setAttribute('novalidate', true);
 // Final pre-submission validation
 contactForm.addEventListener('submit', event => {
 
+    console.log('In submit event listener')
+
     // Manually prevent the form from submitting
     event.preventDefault();
 
     if (!contactForm.checkValidity()) {
 
-        contactForm.querySelectorAll(':invalid').forEach(invalidField => {
-            // Add a red border around each invalid field
-            invalidField.classList.add('contact-form__input-field--presubmission-invalid');
-            // Show the error indicator underneath each invalid field
-            showErrorIndicator(invalidField);
-        });
-
-        // Ensure focus goes to the first invalid form field
-        const nextInvalidFieldToFillIn = contactForm.querySelectorAll(':invalid')[0];
-        nextInvalidFieldToFillIn.focus();
-        showErrorIndicator(nextInvalidFieldToFillIn);
+        findAndStyleInvalidFormFields();
 
     } else {
         // If validation passes, submit the form!
-        // contactForm.submit();
-
-        console.log('Would now submit the form!');
-
-        // The code to display a success message is in js/contactFormSuccessIndicator.js
-        createFormSuccessIndicator();
-
-        // Clear the form fields
-        contactForm.reset();
+        contactForm.submit();
     }
 });
