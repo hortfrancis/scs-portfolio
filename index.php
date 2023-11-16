@@ -206,17 +206,38 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </section>
 
                     <section class="projects__card">
-                        <img src="images/projects/project-coming-soon.png" alt="Project coming soon" />
+                        <img src="images/projects/array-reflection-screenshot.png" alt="JavaScript Array Reflection" />
                         <div class="projects__card-text-area">
-                            <h3>Project Two</h3>
-                            <p>Coming soon...</p>
-                            <a href="#" class="projects__card-button">Live site</a>
-                            <a href="#" class="projects__card-button">Code repo</a>
+                            <h3>JavaScript Array Reflection</h3>
+                            <p>A front-end web application that fetches an image from a 3rd party API and allows the user to assign it to a (validated) email address.</p>
+                            <h4>Technologies</h4>
+                            <ul class="projects__card-tech-list">
+                                <li><svg class="icon">
+                                        <use href="icons/symbol-defs.svg#icon-html-five"></use>
+                                    </svg>HTML</li>
+                                <li><svg class="icon">
+                                        <use href="icons/symbol-defs.svg#icon-css3"></use>
+                                    </svg>CSS</li>
+                                <li><svg class="icon">
+                                        <use href="icons/symbol-defs.svg#icon-sass"></use>
+                                    </svg>Sass (SCSS)</li>
+                                <li><svg class="icon">
+                                        <use href="icons/symbol-defs.svg#icon-javascript"></use>
+                                    </svg>JavaScript</li>
+                                <li><svg class="icon">
+                                        <use href="icons/symbol-defs.svg#icon-git"></use>
+                                    </svg>Git</li>
+                                <li><svg class="icon">
+                                        <use href="icons/symbol-defs.svg#icon-vscode"></use>
+                                    </svg>Visual Studio Code</li>
+                            </ul>
+                            <a href="https://js-array.alex-hort-francis.netmatters-scs.co.uk/" target="_blank" class="projects__card-button">Live site</a>
+                            <a href="https://github.com/hortfrancis/array-reflection" target="_blank" class="projects__card-button">Code repo</a>
                         </div>
                     </section>
 
                     <section class="projects__card">
-                        <img src="images/projects/to-do-app-screenshot.png" alt="Project coming soon" />
+                        <img src="images/projects/to-do-app-screenshot.png" alt="To Do App" />
                         <div class="projects__card-text-area">
                             <h3>To Do App</h3>
                             <p>Front-end application using React, with Redux for state management. Users can add, edit,
@@ -257,7 +278,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </section>
 
                     <section class="projects__card">
-                        <img src="images/projects/cash-balance-manipulator-screenshot.png" alt="Project coming soon" />
+                        <img src="images/projects/cash-balance-manipulator-screenshot.png" alt="Cash Balance Manipulator" />
                         <div class="projects__card-text-area">
                             <h3>Cash Balance Manipulator</h3>
                             <p>A web user interface for manipulating a cash balance.
