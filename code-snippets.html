@@ -450,6 +450,298 @@ textarea.contact-form__input-field--presubmission-invalid {
 
                     </section>
 
+                    <section class="subpage__accordion-section">
+
+                        <div class="subpage__accordion-section-heading-group">
+                            <button class="subpage__accordion-section-open-close-button">
+                                <svg class="icon">
+                                    <use href="icons/symbol-defs.svg#icon-arrow-right"></use>
+                                </svg>
+                            </button>
+                            <h2>Capturing, Validating, and Storing Form Input</h2>
+                        </div>
+
+                        <div class="subpage__accordion-section-content">
+
+                            <p>The contact form on the homepage of this portfolio site uses PHP to process messages sent
+                                through the contact form.</p>
+
+                            <p>First, the browser sends an HTTP GET request to the same URI as the page with the form —
+                                the homepage, the index of the site. This keeps things tidy, and means our server-side
+                                code is at the top of <code>index.php</code>.</p>
+
+                            <p>We&rsquo;ll be using session variables, so we can persist data across a <a
+                                    href="https://en.wikipedia.org/wiki/Post/Redirect/Get"
+                                    target="_blank">&lsquo;Post/Redirect/Get&rsquo;</a> pattern.</p>
+
+
+
+                            <pre class="code-php"><code>
+&gt;?php
+
+// Start/resume session to use session variables
+session_start();
+</code></pre>
+
+                            <p>We&rsquo;ll get the submitted form data out of the body of the POST request using
+                                PHP&rsquo;s built-in superglobals:
+                            </p>
+
+                            <pre class="code-php"><code>
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    // Set session variables & sanitiase input data
+    $_SESSION['name'] = trim(htmlspecialchars($_POST['name']));
+    $_SESSION['email'] = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+    $_SESSION['phone'] = preg_replace('/\D/', '', $_POST['phone']);
+    $_SESSION['message'] = trim(htmlspecialchars($_POST['message']));
+                    </code></pre>
+
+                            <p><a href="https://www.php.net/manual/en/filter.filters.sanitize.php"
+                                    target="_blank"><code>FILTER_SANITIZE_STRING</code></a> is deprecated as of PHP
+                                8.1.0, so I&rsquo;ve used
+                                <code>htmlspecialchars()</code> (the recommended alternative) instead.
+                            </p>
+
+                            <p>Once we know that our form data is sanitised (it only contains characters we allow and
+                                expect), we can move on to validating the result of our santisation. The If statement
+                                checks if the sanitised inputs are invalid, and if so updates a session variable to hold
+                                an
+                                &lsquo;error&rsquo; state: </p>
+
+                            <pre class="code-php"><code>
+$phoneValidationPattern = "/(\+?\d{1,4}[\s\-]?)?(\(?[\d\s\-]{1,}?\)?[\s\-]?)?[\d\s\-]{7,15}/";
+
+if (
+        empty($_SESSION['name'])
+        || empty($_SESSION['email'])
+        // Phone number either passess the regex or is not provided
+        || (!preg_match($phoneValidationPattern, $_SESSION['phone']) && !$_SESSION['phone'] === '')
+        || empty($_SESSION['message'])
+    ) {
+        $_SESSION['error'] = true;
+
+        // Redirect to the form, so the user can try again 
+        header('Location: index.php#contact-form');
+        exit();
+    } else {
+        // Send data to database
+                    </code></pre>
+
+                            <p>Assuming the data is not invalid, we can add it to the SQL database! To do this, we will
+                                be including another file so we can call a function declared inside — separating the PHP
+                                file that displays and handles submission of the form in one file, and declaring
+                                &lsquo;helper&rsquo; functions in another, is a good practice and represents a <a
+                                    href="https://en.wikipedia.org/wiki/Separation_of_concerns"
+                                    target="_blank">&lsquo;separation of
+                                    concerns&rsquo;</a>.</p>
+
+                            <pre class="code-php"><code>
+include_once 'lib/add-message-to-database.php'; 
+                                </code></pre>
+
+                            <p>I like to use very descriptive variable and function names! Let&rsquo;s have a look at
+                                <code>addMessageToDatabase()</code>
+                            </p>
+
+                            <pre class="code-php"><code>
+&lt;?php
+
+function addMessageToDatabase(array $message): bool
+{
+    // Get `$databaseConnection` from `lib/database-connection.php`
+    include 'database-connection.php';
+
+    try {
+        $pdoStatement = $databaseConnection->prepare('
+        INSERT INTO Messages (name, email, phone, message)
+        VALUES (:name, :email, :phone, :message)
+        ');
+
+        $pdoStatement->bindValue(':name', $message['name'], PDO::PARAM_STR);
+        $pdoStatement->bindValue(':email', $message['email'], PDO::PARAM_STR);
+        $pdoStatement->bindValue(':phone', $message['phone'], PDO::PARAM_STR);
+        // If the phone number is an empty string, set it to PHP's `null` instead, 
+        // so SQL will save it as it's own `NULL` data type.
+        $pdoStatement->bindValue(
+            ':phone',
+            $message['phone'] === '' ? null : $message['phone'],
+            PDO::PARAM_STR
+        );
+        $pdoStatement->bindValue(':message', $message['message'], PDO::PARAM_STR);
+
+        // Execute the SQL command
+        $pdoStatement->execute();
+
+        // If successful, return true for frontend UI feedback
+        return true;
+    } catch (Exception $exception) {
+        echo "Database query failed: " . $exception->getMessage();
+        return false;
+    }
+}
+                    </code></pre>
+
+                            <p>This function encapsulates the logic for creating a SQL query that adds the form data to
+                                the database. I&rsquo;ve used a &lsquo;prepared statement&rsquo; to avoid accidental SQL
+                                injection, which
+                                is an attack vector that could be used by a malicious actor to damage the integrity of
+                                the database.</p>
+
+                            <p>Setting up the actual database connection is done in another separate file:</p>
+
+                            <pre class="code-php"><code>
+&lt;?php
+
+include 'get-env-variable.php';
+
+$server = getEnvironmentalVariable('SERVER');
+$database = getEnvironmentalVariable('DATABASE');
+$user = getEnvironmentalVariable('USER');
+$password = getEnvironmentalVariable('DATABASE_PASSWORD');
+
+if ($password === false) {
+    echo 'Database password not found in .env file';
+    exit;
+}
+
+try {
+    $databaseConnection = new PDO("mysql:host=$server;dbname=$database", $user, $password);
+} catch (PDOException $exception) {
+    echo 'Database connection failed: ' . $exception->getMessage();
+    exit;
+}
+                    </code></pre>
+
+                            <p>I&rsquo;ve used another helper function here to get the environmental variables from a
+                                <code>.env</code>
+                                file; this approach crucially avoids exposing credentials in version control
+                                repositories, and means the same project code works locally and in production.
+                            </p>
+
+                            <p>The <code>getEnvironmentalVariable()</code> function works by accessing the <code>.env</code> file and
+                                checking
+                                through to find the line with a key that corresponds to the environmental variable
+                                requested. If this line is found, it&rsquo;ll return the value of the environmental
+                                variable —
+                                it&rsquo;ll return <code>false</code> if not, which means I can easily evaluate against its return
+                                value in
+                                conditionals.
+                            </p>
+
+                            <p>I&rsquo;ve used type declarations in this function make it clear what arguments it
+                                expects and which type of value will return: </p>
+
+                            <pre class="code-php"><code>
+&lt;?php
+
+function getEnvironmentalVariable(string $variableName): string|bool
+{
+    // Get the entire `.env` file as a string
+    $contents = file_get_contents(__DIR__ . '/../../.env');
+
+    // Split the string into an array of lines
+    $lines = explode("\n", $contents);
+
+    foreach ($lines as $line) {
+
+        // If the line contains the requested environmental variable
+        if (strpos($line, $variableName) !== false) {
+
+            // Get the value and return it
+            $explodedLine = explode('=', $line);
+            return $explodedLine[1];
+        }
+    }
+    // Return false if the environmental variable was not found
+    return false;
+}
+                    </code></pre>
+
+                            <p>To connect to the MariaDB / MySQL database running either on my local device or the
+                                production server, I&rsquo;ve used PHP&rsquo;s PDO (&lsquo;PHP Data Object&rsquo;)
+                                built-in functionality, which
+                                is generally recommended.
+                            </p>
+
+                            <p>Returning to <code>index.php</code>, we add a session variable to set application state as successful
+                                for the form submission, reset our session variables for the form fields (so the
+                                previous form data is not still be shown in the form fields, confusing the user), and then
+                                redirect the client again to clear any data from the body of the HTTP request (to
+                                prevent form data being submitted twice if the page is refreshed by the user). </p>
+
+                            <pre class="code-php"><code>
+// Pass the message data as an associative array to be stored in the database, 
+// and evaluate if this was successful
+if (addMessageToDatabase(
+    [
+        'name' => $_SESSION['name'],
+        'email' => $_SESSION['email'],
+        'phone' => $_SESSION['phone'],
+        'message' => $_SESSION['message']
+    ]
+)) {
+    $_SESSION['success'] = true;
+
+    // Reset session variables
+    $_SESSION['name'] = $_SESSION['email'] = $_SESSION['phone'] = $_SESSION['message'] = '';
+} else {
+    // Set error message
+    $_SESSION['error'] = true;
+}
+// Follow Post/Redirect/Get pattern to avoid resubmitting the form on refresh
+header('Location: index.php');
+exit();
+}
+                            </code></pre>
+
+                            <p>The form data would otherwise be repopulated using the <code>value</code> attribute of
+                                the <code>&lt;input&gt;</code> element: </p>
+
+                            <pre class="code-php"><code></code>
+&lt;input 
+    type="text" 
+    id="contact-form-name" 
+    name="name" 
+    required 
+    placeholder="What's your name?" 
+    value="&lt;?php
+        if (isset($_SESSION['name'])) {
+            echo $_SESSION['name'];
+        }
+    ?&gt;"&gt;
+                            </code></pre>
+
+
+                            <p>I used some
+                                <code>&lt;script&gt;</code> tags at the bottom of the file in combination with additional JavaScript
+                                in a linked file to offer some final user feedback on the success or failure of the form
+                                submission. This code will run <em>in relation to the server-side logic</em>, so it
+                                marries server-side validation with front-end feedback. </p>
+
+                            <pre class="code-php"><code></code>
+&lt;?php
+// If the form has just been submitted, provide a visual indicator of success
+if (isset($_SESSION['success']) && $_SESSION['success'] === true) {
+    echo '&lt;script&gt;createFormSuccessIndicator();&lt;/script&gt;';
+    // Reset session variable to avoid the indicator being shown on refresh
+    $_SESSION['success'] = false;
+}
+
+// If the form data has failed server-side validation, provide a visual indicator of the error
+if (isset($_SESSION['error']) && $_SESSION['error'] === true) {
+    echo '&lt;script&gt;createFormSubmissionFailIndicator();&lt;/script&gt;';
+    // Reset session variable to avoid the indicator being shown on refresh
+    $_SESSION['error'] = false;
+}
+?&gt;
+                            </code></pre>
+
+
+                        </div>
+
+                    </section>
+
                 </main>
             </div>
         </div>

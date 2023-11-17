@@ -149,6 +149,10 @@ pre.code-javascript:before {
   content: "JavaScript";
 }
 
+pre.code-php:before {
+  content: "PHP";
+}
+
 .no-line-break {
   white-space: nowrap;
 }
