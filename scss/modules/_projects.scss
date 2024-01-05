@@ -1,4 +1,9 @@
 .projects__card {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     border: 1ex solid $base-black;
 }
 
@@ -30,6 +35,10 @@
         margin-bottom: 1rem;
     }
 
+}
+
+.projects__card-button-group {
+    padding: 1em;
 }
 
 .projects__card-button {

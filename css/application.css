@@ -461,6 +461,9 @@ pre.code-php:before {
 }
 
 .projects__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border: 1ex solid #0C090D;
 }
 
@@ -485,6 +488,10 @@ pre.code-php:before {
   align-items: center;
   margin-right: 1.5rem;
   margin-bottom: 1rem;
+}
+
+.projects__card-button-group {
+  padding: 1em;
 }
 
 .projects__card-button {
