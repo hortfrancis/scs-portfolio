@@ -178,7 +178,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <img src="images/projects/netmatters-homepage-screenshot.png" alt="Netmatters homepage project" />
                         <div class="projects__card-text-area">
                             <h3>Netmatters Homepage</h3>
-                            <p>A rebuild of the Netmatters website, from scratch.</p>
+                            <p>A rebuild of the Netmatters website, from scratch. A vanilla JavaScript & PHP project, with a MySQL database for 'latest news' and contact form submissions.</p>
                             <h4>Technologies</h4>
                             <ul class="projects__card-tech-list">
                                 <li><svg class="icon">
@@ -194,14 +194,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                         <use href="icons/symbol-defs.svg#icon-javascript"></use>
                                     </svg>JavaScript</li>
                                 <li><svg class="icon">
+                                        <use href="icons/symbol-defs.svg#icon-php"></use>
+                                    </svg>PHP</li>
+                                <li><svg class="icon">
+                                        <use href="icons/symbol-defs.svg#icon-mysql"></use>
+                                    </svg>MySQL</li>
+                                <li><svg class="icon">
                                         <use href="icons/symbol-defs.svg#icon-git"></use>
                                     </svg>Git</li>
                                 <li><svg class="icon">
                                         <use href="icons/symbol-defs.svg#icon-vscode"></use>
                                     </svg>Visual Studio Code</li>
                             </ul>
-                            <a href="https://netmatters.alex-hort-francis.netmatters-scs.co.uk/" target="_blank" class="projects__card-button">Live site</a>
-                            <a href="https://github.com/hortfrancis/netmatters-homepage" target="_blank" class="projects__card-button">Code repo</a>
+                            <div class="">
+                                <a href="https://netmatters.alex-hort-francis.netmatters-scs.co.uk/" target="_blank" class="projects__card-button">Live site</a>
+                                <a href="https://github.com/hortfrancis/netmatters-homepage" target="_blank" class="projects__card-button">Code repo</a>
+                            </div>
                         </div>
                     </section>
 
@@ -209,7 +217,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <img src="images/projects/array-reflection-screenshot.png" alt="JavaScript Array Reflection" />
                         <div class="projects__card-text-area">
                             <h3>JavaScript Array Reflection</h3>
-                            <p>A front-end web application that fetches an image from a 3rd party API and allows the user to assign it to a (validated) email address.</p>
+                            <p>A front-end web application that fetches an image from a 3rd party API and allows the user to assign it to a (validated) email address. Written with vanilla JavaScript. </p>
                             <h4>Technologies</h4>
                             <ul class="projects__card-tech-list">
                                 <li><svg class="icon">
@@ -231,8 +239,88 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                         <use href="icons/symbol-defs.svg#icon-vscode"></use>
                                     </svg>Visual Studio Code</li>
                             </ul>
-                            <a href="https://js-array.alex-hort-francis.netmatters-scs.co.uk/" target="_blank" class="projects__card-button">Live site</a>
-                            <a href="https://github.com/hortfrancis/array-reflection" target="_blank" class="projects__card-button">Code repo</a>
+                            <div class="">
+                                <a href="https://js-array.alex-hort-francis.netmatters-scs.co.uk/" target="_blank" class="projects__card-button">Live site</a>
+                                <a href="https://github.com/hortfrancis/array-reflection" target="_blank" class="projects__card-button">Code repo</a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="projects__card">
+                        <img src="images/projects/laravel-reflection-screenshot.png" alt="Laravel reflection project" />
+                        <div class="projects__card-text-area">
+                            <h3>Laravel Reflection</h3>
+                            <p>A full-stack 'company management app' that applies CRUD operations and RESTful actions on companies and employees, stored in a MySQL database. Blade components with Tailwind CSS render the user interface. </p>
+                            <h4>Technologies</h4>
+                            <ul class="projects__card-tech-list">
+                                <li><svg class="icon">
+                                        <use href="icons/symbol-defs.svg#icon-html-five"></use>
+                                    </svg>HTML</li>
+                                <li><svg class="icon">
+                                        <use href="icons/symbol-defs.svg#icon-tailwindcss"></use>
+                                    </svg>Tailwind CSS</li>
+                                <li><svg class="icon">
+                                        <use href="icons/symbol-defs.svg#icon-php"></use>
+                                    </svg>PHP</li>
+                                <li><svg class="icon">
+                                        <use href="icons/symbol-defs.svg#icon-laravel"></use>
+                                    </svg>Laravel</li>
+                                <li><svg class="icon">
+                                        <use href="icons/symbol-defs.svg#icon-mysql"></use>
+                                    </svg>MySQL</li>
+                                <li><svg class="icon">
+                                        <use href="icons/symbol-defs.svg#icon-git"></use>
+                                    </svg>Git</li>
+                                <li><svg class="icon">
+                                        <use href="icons/symbol-defs.svg#icon-phpstorm"></use>
+                                    </svg>PhpStorm</li>
+                            </ul>
+                            <a href="https://hortfrancis.com/scs-portfolio/laravel-reflection/" class="projects__card-button">Live site</a>
+                            <a href="https://github.com/hortfrancis/laravel-reflection" class="projects__card-button">Code repo</a>
+                        </div>
+                    </section>
+
+                    <section class="projects__card">
+                        <img src="images/projects/project-coming-soon.png" alt="Next Blog project" />
+                        <div class="projects__card-text-area">
+                            <h3>My Next Blog</h3>
+                            <p>A Next.js project from a previous mini-bootcamp with Tech Educators. I created a full-stack React application and deployed with Vercel, using the 'JAM' stack: JavaScript, APIs, Markdown.</p>
+                            <h4>Technologies</h4>
+                            <ul class="projects__card-tech-list">
+                                <li><svg class="icon">
+                                        <use href="icons/symbol-defs.svg#icon-html-five"></use>
+                                    </svg>HTML</li>
+                                <li><svg class="icon">
+                                        <use href="icons/symbol-defs.svg#icon-tailwindcss"></use>
+                                    </svg>Tailwind CSS</li>
+                                <li><svg class="icon">
+                                        <use href="icons/symbol-defs.svg#icon-typescript"></use>
+                                    </svg>TypeScript</li>
+                                <li><svg class="icon">
+                                        <use href="icons/symbol-defs.svg#icon-node-js"></use>
+                                    </svg>Node</li>
+                                <li><svg class="icon">
+                                        <use href="icons/symbol-defs.svg#icon-npm"></use>
+                                    </svg>npm</li>
+                                <li><svg class="icon">
+                                        <use href="icons/symbol-defs.svg#icon-react"></use>
+                                    </svg>React</li>
+                                <li><svg class="icon">
+                                        <use href="icons/symbol-defs.svg#icon-next-js"></use>
+                                    </svg>Next.js</li>
+                                <li><svg class="icon">
+                                        <use href="icons/symbol-defs.svg#icon-vercel"></use>
+                                    </svg>Vercel</li>
+                                <li><svg class="icon">
+                                        <use href="icons/symbol-defs.svg#icon-git"></use>
+                                    </svg>Git</li>
+                                <li><svg class="icon">
+                                        <use href="icons/symbol-defs.svg#icon-vscode"></use>
+                                    </svg>Visual Studio Code</li>
+                            </ul>
+
+                            <a href="https://next-blog-hortfrancis.vercel.app/" target="_blank" class="projects__card-button">Live site</a>
+                            <a href="https://github.com/hortfrancis/my-next-blog" target="_blank" class="projects__card-button">Code repo</a>
                         </div>
                     </section>
 
@@ -241,7 +329,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="projects__card-text-area">
                             <h3>To Do App</h3>
                             <p>Front-end application using React, with Redux for state management. Users can add, edit,
-                                and delete tasks, and can mark tasks as 'done'.</p>
+                                and delete tasks, and can mark tasks as 'done'. Made previously while studying with HyperionDev.</p>
                             <h4>Technologies</h4>
                             <ul class="projects__card-tech-list">
                                 <li><svg class="icon">
@@ -283,7 +371,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             <h3>Cash Balance Manipulator</h3>
                             <p>A web user interface for manipulating a cash balance.
                                 Along with adding or subtracting an amount to the balance, the user can add interest at
-                                a fixed rate of 5% or apply a charge to the balance at a fixed rate of 15%.</p>
+                                a fixed rate of 5% or apply a charge to the balance at a fixed rate of 15%. Made previously while studying with HyperionDev.</p>
                             <h4>Technologies</h4>
                             <ul class="projects__card-tech-list">
                                 <li><svg class="icon">
@@ -319,25 +407,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </div>
                     </section>
 
-                    <section class="projects__card">
-                        <img src="images/projects/project-coming-soon.png" alt="Project coming soon" />
-                        <div class="projects__card-text-area">
-                            <h3>Project Five</h3>
-                            <p>Coming soon...</p>
-                            <a href="#" class="projects__card-button">Live site</a>
-                            <a href="#" class="projects__card-button">Code repo</a>
-                        </div>
-                    </section>
 
-                    <section class="projects__card">
-                        <img src="images/projects/project-coming-soon.png" alt="Project coming soon" />
-                        <div class="projects__card-text-area">
-                            <h3>Project Six</h3>
-                            <p>Coming soon...</p>
-                            <a href="#" class="projects__card-button">Live site</a>
-                            <a href="#" class="projects__card-button">Code repo</a>
-                        </div>
-                    </section>
+
+
 
                 </div>
             </section>
