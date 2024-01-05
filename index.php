@@ -281,7 +281,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </section>
 
                     <section class="projects__card">
-                        <img src="images/projects/project-coming-soon.png" alt="Next Blog project" />
+                        <img src="images/projects/my-next-blog-screenshot.png" alt="Next Blog project" />
                         <div class="projects__card-text-area">
                             <h3>My Next Blog</h3>
                             <p>A Next.js project from a previous mini-bootcamp with Tech Educators. I created a full-stack React application and deployed with Vercel, using the 'JAM' stack: JavaScript, APIs, Markdown.</p>
