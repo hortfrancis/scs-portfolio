@@ -212,7 +212,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </div>
 
                         <div class="projects__card-button-group">
-                            <a href="https://netmatters.alex-hort-francis.netmatters-scs.co.uk/" target="_blank" class="projects__card-button">Live site</a>
+                            <a href="https://hortfrancis.com/scs-portfolio/netmatters-homepage/" target="_blank" class="projects__card-button">Live site</a>
                             <a href="https://github.com/hortfrancis/netmatters-homepage" target="_blank" class="projects__card-button">Code repo</a>
                         </div>
 
@@ -250,7 +250,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </div>
 
                         <div class="projects__card-button-group">
-                            <a href="https://js-array.alex-hort-francis.netmatters-scs.co.uk/" target="_blank" class="projects__card-button">Live site</a>
+                            <a href="https://hortfrancis.com/scs-portfolio/array-reflection/" target="_blank" class="projects__card-button">Live site</a>
                             <a href="https://github.com/hortfrancis/array-reflection" target="_blank" class="projects__card-button">Code repo</a>
                         </div>
 
